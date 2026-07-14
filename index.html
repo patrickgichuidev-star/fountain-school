@@ -4,568 +4,412 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fountain Group of Schools – Tigoni: A premier private day and boarding school in Murengeti, Tigoni, Limuru, Kiambu County, offering CBC education from Playgroup to Grade 9.">
-    <meta name="keywords" content="Fountain Group of Schools, Tigoni, private school Kenya, CBC education, boarding school Kiambu, Murengeti school, Limuru school">
-    <meta name="author" content="Fountain Group of Schools">
     <meta name="theme-color" content="#1a5c3a">
     <title>Fountain Group of Schools – Tigoni | Empowering Every Learner to Excel</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="css/animations.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --p: #1a5c3a; --pl: #2d8a56; --pl2: #4caf50; --pd: #0e3b24;
+            --w: #fff; --ow: #f8f9fa; --lb: #f0f4f0;
+            --td: #1e1e1e; --tm: #444; --tl: #666; --tmu: #777;
+            --g: rgba(255,255,255,0.7); --gb: rgba(255,255,255,0.4); --gs: 0 8px 32px rgba(0,0,0,0.06);
+            --t: all .3s cubic-bezier(.4,0,.2,1);
+            --br: 24px; --hf: 'Playfair Display',serif; --bf: 'Inter',sans-serif; --nh: 80px;
+        }
+        body.dark-mode {
+            --p: #4caf50; --pl: #66bb6a; --pl2: #81c784; --pd: #1b5e20;
+            --w: #121212; --ow: #1e1e1e; --lb: #1a1a1a;
+            --td: #e0e0e0; --tm: #b0b0b0; --tl: #9e9e9e; --tmu: #888;
+            --g: rgba(30,30,30,0.7); --gb: rgba(255,255,255,0.08); --gs: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth;font-size:16px}
+        body{font-family:var(--bf);color:var(--td);background:var(--w);line-height:1.6;overflow-x:hidden;transition:background .4s,color .4s}
+        a{text-decoration:none;color:inherit;transition:var(--t)}
+        ul{list-style:none}
+        button{cursor:pointer;border:none;background:none;font-family:inherit}
+        .container{max-width:1280px;margin:0 auto;padding:0 24px}
+        .section-padding{padding:100px 0}
+        .bg-light{background:var(--ow)}
+        .text-center{text-align:center}
+        .mt-2{margin-top:32px}.mt-3{margin-top:48px}
+        .text-highlight{color:var(--pl);font-weight:700}
+        h1,h2,h3,h4,h5,h6{font-family:var(--hf);font-weight:700;line-height:1.2;color:var(--td)}
+        .section-tag{display:inline-block;text-transform:uppercase;letter-spacing:2px;font-weight:600;font-size:.85rem;color:var(--pl);margin-bottom:12px}
+        .section-title{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:16px}
+        .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-weight:600;border-radius:50px;font-size:.95rem;transition:var(--t);border:2px solid transparent;cursor:pointer}
+        .btn-primary{background:var(--p);color:#fff;box-shadow:0 4px 14px rgba(26,92,58,0.3)}
+        .btn-primary:hover{background:var(--pl);transform:translateY(-2px);box-shadow:0 8px 20px rgba(26,92,58,0.4)}
+        .btn-outline{background:transparent;border-color:var(--p);color:var(--p)}
+        .btn-outline:hover{background:var(--p);color:#fff}
+        .btn-lg{padding:16px 36px;font-size:1.05rem}.btn-sm{padding:8px 20px;font-size:.85rem}
+        .btn-apply{background:var(--pl);color:#fff;font-weight:700;box-shadow:0 4px 15px rgba(45,138,86,0.4)}
+        .btn-apply:hover{background:var(--p);transform:translateY(-2px)}
+        .glass-card{background:var(--g);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--gb);border-radius:var(--br);box-shadow:var(--gs);transition:var(--t)}
+        .glass-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
+        .skip-to-content{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--p);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;z-index:10000;font-weight:600}
+        .skip-to-content:focus{top:0}
+        .loading-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--w);display:flex;align-items:center;justify-content:center;z-index:99999;transition:opacity .5s,visibility .5s}
+        .loading-screen.hidden{opacity:0;visibility:hidden}
+        .site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--g);backdrop-filter:blur(12px);border-bottom:1px solid var(--gb);height:var(--nh)}
+        .header-container{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:100%}
+        .logo-link{display:flex;align-items:center;gap:12px}
+        .logo-title{font-family:var(--hf);font-weight:800;font-size:1.3rem;color:var(--p)}
+        .logo-subtitle{font-size:.7rem;font-weight:500;color:var(--tm)}
+        .main-nav .nav-list{display:flex;gap:32px}
+        .nav-link{font-weight:500;font-size:.9rem;color:var(--tm);padding:8px 0;position:relative}
+        .nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--p);transition:width .3s}
+        .nav-link:hover,.nav-link.active{color:var(--p)}
+        .nav-link.active::after,.nav-link:hover::after{width:100%}
+        .header-actions{display:flex;align-items:center;gap:16px}
+        .dark-mode-toggle{color:var(--tm);padding:8px;border-radius:50%}
+        .sun-icon,.moon-icon{display:none}
+        body:not(.dark-mode) .sun-icon{display:block}
+        body.dark-mode .moon-icon{display:block}
+        .mobile-menu-toggle{display:none;flex-direction:column;gap:5px}
+        .hamburger-line{width:24px;height:2px;background:var(--td)}
+        .mobile-menu-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--w);z-index:999;transform:translateX(100%);transition:transform .4s;display:flex;align-items:center;justify-content:center}
+        .mobile-menu-overlay.active{transform:translateX(0)}
+        .mobile-nav-link{font-size:1.5rem;font-weight:600}
+        .hero-section{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        .hero-bg-image{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;filter:brightness(0.6);background-color:#2d8a56}
+        .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(26,92,58,0.7),rgba(0,0,0,0.4));z-index:1}
+        .hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 24px;color:#fff}
+        .hero-badge{display:inline-block;background:rgba(255,255,255,0.2);backdrop-filter:blur(8px);padding:8px 24px;border-radius:50px;font-weight:500;margin-bottom:24px}
+        .hero-headline{font-size:clamp(2.8rem,7vw,4.8rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px}
+        .hero-subheading{font-size:1.15rem;color:rgba(255,255,255,0.9);margin-bottom:40px;max-width:700px;margin-inline:auto}
+        .hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
+        .hero-scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.8);animation:bounce 2s infinite}
+        @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0) translateX(-50%)}40%{transform:translateY(-10px) translateX(-50%)}60%{transform:translateY(-5px) translateX(-50%)}}
+        .pulse-animation{animation:pulse 2s infinite}
+        @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(45,138,86,0.5)}70%{box-shadow:0 0 0 15px rgba(45,138,86,0)}100%{box-shadow:0 0 0 0 rgba(45,138,86,0)}}
+        .reveal-on-scroll{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+        .reveal-on-scroll.revealed{opacity:1;transform:translateY(0)}
+        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+        .feature-card{padding:40px 30px;text-align:center}
+        .welcome-grid,.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+        .welcome-image-container{border-radius:32px;overflow:hidden;height:500px}
+        .welcome-image{width:100%;height:100%;background-size:cover;background-position:center}
+        .welcome-stats{display:flex;gap:40px;margin:32px 0}
+        .stat-number{font-size:2.2rem;font-weight:800;color:var(--p);font-family:var(--hf)}
+        .grade-levels-grid,.activities-grid{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
+        .grade-card{padding:30px 24px;text-align:center;width:180px}
+        .facilities-carousel{display:flex;gap:24px;overflow-x:auto;padding:20px 0;scroll-snap-type:x mandatory}
+        .facility-slide{min-width:280px;scroll-snap-align:start}
+        .facility-image{height:200px;background-size:cover;background-position:center}
+        .news-grid,.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+        .news-image{height:200px;background-size:cover;position:relative}
+        .news-category{position:absolute;top:16px;left:16px;background:var(--p);color:#fff;padding:4px 12px;border-radius:50px;font-size:.8rem}
+        .gallery-masonry{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
+        .gallery-item{background-size:cover;background-position:center;border-radius:16px;position:relative;overflow:hidden}
+        .gallery-item.tall{grid-row:span 2}
+        .gallery-item.wide{grid-column:span 2}
+        .gallery-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;padding:16px;opacity:0;transition:.3s}
+        .gallery-item:hover .gallery-caption{opacity:1}
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+        .contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--tm)}
+        .timeline{position:relative;padding-left:40px;border-left:2px solid var(--pl)}
+        .timeline-item{margin-bottom:30px;position:relative}
+        .timeline-item::before{content:'';position:absolute;left:-10px;top:5px;width:18px;height:18px;background:var(--p);border-radius:50%}
+        .accordion-item{border-bottom:1px solid rgba(26,92,58,0.1)}
+        .accordion-header{padding:16px 0;font-weight:600;cursor:pointer;display:flex;justify-content:space-between}
+        .accordion-content{max-height:0;overflow:hidden;transition:max-height .4s}
+        .accordion-content.open{max-height:300px}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:40px}
+        .scroll-to-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;visibility:hidden;transform:translateY(20px);transition:var(--t)}
+        .scroll-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
+        @media(max-width:1024px){.features-grid,.gallery-masonry{grid-template-columns:repeat(2,1fr)}.news-grid{grid-template-columns:1fr 1fr}}
+        @media(max-width:900px){.main-nav{display:none}.mobile-menu-toggle{display:flex}.welcome-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.gallery-masonry{grid-template-columns:repeat(2,1fr)}}
+        @media(max-width:600px){.features-grid,.activities-grid,.news-grid,.gallery-masonry{grid-template-columns:1fr}.gallery-item.wide{grid-column:span 1}.footer-grid{grid-template-columns:1fr}.hero-buttons{flex-direction:column;align-items:center}}
+    </style>
 </head>
 <body>
     <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen" aria-hidden="true">
-        <div class="loading-spinner">
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="40" cy="40" r="35" stroke="#e8f5e9" stroke-width="4" fill="none"/>
-                <path d="M40 5 A35 35 0 0 1 75 40" stroke="#1a5c3a" stroke-width="4" stroke-linecap="round" fill="none">
-                    <animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="1.2s" repeatCount="indefinite"/>
-                </path>
-            </svg>
-            <p class="loading-text">Fountain Group of Schools</p>
-        </div>
+    <div class="loading-screen" id="loadingScreen">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="35" stroke="#e8f5e9" stroke-width="4" fill="none"/>
+            <path d="M40 5 A35 35 0 0 1 75 40" stroke="#1a5c3a" stroke-width="4" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="1.2s" repeatCount="indefinite"/>
+            </path>
+        </svg>
+        <p style="margin-top:16px;font-weight:600;color:var(--p);font-family:var(--hf)">Fountain Group of Schools</p>
     </div>
 
-    <!-- Skip to Main Content -->
     <a href="#main-content" class="skip-to-content">Skip to Main Content</a>
 
-    <!-- Navigation -->
+    <!-- Header -->
     <header class="site-header" id="siteHeader">
         <div class="header-container">
-            <div class="logo-container">
-                <a href="index.html" class="logo-link" aria-label="Fountain Group of Schools Home">
-                    <div class="logo-icon">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="24" cy="24" r="22" fill="#1a5c3a" stroke="#2d8a56" stroke-width="2"/>
-                            <path d="M24 8 L28 18 L24 16 L20 18 Z" fill="#fff" opacity="0.9"/>
-                            <path d="M16 20 L20 30 L16 28 L12 30 Z" fill="#fff" opacity="0.8"/>
-                            <path d="M32 20 L36 30 L32 28 L28 30 Z" fill="#fff" opacity="0.8"/>
-                            <rect x="18" y="30" width="12" height="10" rx="2" fill="#fff" opacity="0.7"/>
-                            <text x="24" y="42" text-anchor="middle" font-size="7" fill="#1a5c3a" font-weight="700">FGS</text>
-                        </svg>
-                    </div>
-                    <div class="logo-text">
-                        <span class="logo-title">Fountain</span>
-                        <span class="logo-subtitle">Group of Schools – Tigoni</span>
-                    </div>
-                </a>
-            </div>
-            <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
+            <a href="#home" class="logo-link">
+                <svg width="48" height="48"><circle cx="24" cy="24" r="22" fill="#1a5c3a"/><text x="24" y="29" text-anchor="middle" fill="#fff" font-weight="700" font-size="14">FGS</text></svg>
+                <div><span class="logo-title">Fountain</span><span class="logo-subtitle">Group of Schools – Tigoni</span></div>
+            </a>
+            <nav class="main-nav" id="mainNav">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="academics.html" class="nav-link">Academics</a></li>
-                    <li><a href="boarding.html" class="nav-link">Boarding</a></li>
-                    <li><a href="facilities.html" class="nav-link">Facilities</a></li>
-                    <li><a href="student-life.html" class="nav-link">Student Life</a></li>
-                    <li><a href="admissions.html" class="nav-link">Admissions</a></li>
-                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li><a href="news.html" class="nav-link">News</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#academics" class="nav-link">Academics</a></li>
+                    <li><a href="#boarding" class="nav-link">Boarding</a></li>
+                    <li><a href="#facilities" class="nav-link">Facilities</a></li>
+                    <li><a href="#student-life" class="nav-link">Student Life</a></li>
+                    <li><a href="#admissions" class="nav-link">Admissions</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#news" class="nav-link">News</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="admissions.html#apply" class="btn btn-apply pulse-animation">Apply Now</a>
-                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
-                    <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <a href="#admissions" class="btn btn-apply pulse-animation">Apply Now</a>
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <svg class="sun-icon" width="22" height="22"><circle cx="12" cy="12" r="5"/></svg>
+                    <svg class="moon-icon" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
                 </button>
             </div>
         </div>
     </header>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay" aria-hidden="true">
-        <div class="mobile-menu-container">
-            <ul class="mobile-nav-list">
-                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
-                <li><a href="about.html" class="mobile-nav-link">About</a></li>
-                <li><a href="academics.html" class="mobile-nav-link">Academics</a></li>
-                <li><a href="boarding.html" class="mobile-nav-link">Boarding</a></li>
-                <li><a href="facilities.html" class="mobile-nav-link">Facilities</a></li>
-                <li><a href="student-life.html" class="mobile-nav-link">Student Life</a></li>
-                <li><a href="admissions.html" class="mobile-nav-link">Admissions</a></li>
-                <li><a href="gallery.html" class="mobile-nav-link">Gallery</a></li>
-                <li><a href="news.html" class="mobile-nav-link">News</a></li>
-                <li><a href="contact.html" class="mobile-nav-link">Contact</a></li>
-            </ul>
-            <a href="admissions.html#apply" class="btn btn-apply btn-block">Apply Now</a>
-        </div>
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <ul style="display:flex;flex-direction:column;gap:24px;text-align:center">
+            <li><a href="#home" class="mobile-nav-link">Home</a></li><li><a href="#about" class="mobile-nav-link">About</a></li><li><a href="#academics" class="mobile-nav-link">Academics</a></li><li><a href="#boarding" class="mobile-nav-link">Boarding</a></li><li><a href="#facilities" class="mobile-nav-link">Facilities</a></li><li><a href="#student-life" class="mobile-nav-link">Student Life</a></li><li><a href="#admissions" class="mobile-nav-link">Admissions</a></li><li><a href="#gallery" class="mobile-nav-link">Gallery</a></li><li><a href="#news" class="mobile-nav-link">News</a></li><li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
     </div>
 
-    <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero-section" id="hero">
+        <!-- HOME -->
+        <section id="home" class="hero-section">
+            <div class="hero-bg-image" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1350')"></div>
             <div class="hero-overlay"></div>
-            <div class="hero-bg-image" style="background-image: url('images/hero-campus.jpg');"></div>
             <div class="hero-content">
                 <span class="hero-badge">Est. 2010 · Murengeti, Tigoni</span>
                 <h1 class="hero-headline">Empowering Every Learner<br>to <span class="text-highlight">Excel</span></h1>
-                <p class="hero-subheading">
-                    At Fountain Group of Schools – Tigoni, we nurture young minds through a holistic CBC education,
-                    modern facilities, and a supportive community that inspires academic excellence, creativity,
-                    and character development from Playgroup through Grade 9.
-                </p>
+                <p class="hero-subheading">Holistic CBC education from Playgroup to Grade 9 in a nurturing, modern environment.</p>
                 <div class="hero-buttons">
-                    <a href="admissions.html#apply" class="btn btn-primary btn-lg">Apply Now <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-                    <a href="contact.html#tour" class="btn btn-outline btn-lg">Book a School Tour</a>
-                </div>
-                <div class="hero-scroll-indicator">
-                    <span>Discover More</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    <a href="#admissions" class="btn btn-primary btn-lg">Apply Now</a>
+                    <a href="#contact" class="btn btn-outline btn-lg">Book a School Tour</a>
                 </div>
             </div>
         </section>
 
-        <!-- Welcome Section -->
-        <section class="welcome-section section-padding reveal-on-scroll">
+        <!-- WELCOME (part of Home) -->
+        <section class="section-padding reveal-on-scroll">
+            <div class="container welcome-grid">
+                <div class="welcome-image-container glass-card"><div class="welcome-image" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90910e59f?w=800')"></div></div>
+                <div>
+                    <span class="section-tag">Welcome</span>
+                    <h2 class="section-title">A Place Where Every Child <span class="text-highlight">Thrives</span></h2>
+                    <p>Fountain Group of Schools – Tigoni is a vibrant private day and boarding school in Murengeti, Tigoni, Limuru. Since 2010 we have delivered a transformative CBC education supported by modern ICT centres, science labs, a rich library, and expansive sports grounds.</p>
+                    <div class="welcome-stats"><div><span class="stat-number">2010</span><span>Founded</span></div><div><span class="stat-number">14</span><span>Grades</span></div><div><span class="stat-number">20+</span><span>Activities</span></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
-                <div class="welcome-grid">
-                    <div class="welcome-image-container glass-card">
-                        <div class="welcome-image" style="background-image: url('images/welcome-campus.jpg');">
-                            <div class="welcome-image-badge">Welcome to Fountain</div>
-                        </div>
+                <div class="text-center"><span class="section-tag">About Us</span><h2 class="section-title">Our <span class="text-highlight">Heritage</span></h2></div>
+                <div class="about-grid">
+                    <div>
+                        <h3>Founded in 2010</h3>
+                        <p>Fountain Group of Schools – Tigoni was established to provide world‑class education in the serene highlands of Kiambu County. Located in <strong>Murengeti, Tigoni, Limuru</strong>, the school has grown into a centre of academic and personal excellence.</p>
+                        <div style="margin:20px 0"><strong>Mission:</strong> To empower learners with knowledge, skills and values for lifelong success.<br><strong>Vision:</strong> A leading school producing holistic, confident and innovative leaders.<br><strong>Motto:</strong> "Empowering Every Learner to Excel"</div>
+                        <h4>Core Values</h4>
+                        <ul style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
+                            <li class="btn btn-sm" style="background:var(--p);color:#fff">Integrity</li>
+                            <li class="btn btn-sm" style="background:var(--p);color:#fff">Excellence</li>
+                            <li class="btn btn-sm" style="background:var(--p);color:#fff">Respect</li>
+                            <li class="btn btn-sm" style="background:var(--p);color:#fff">Innovation</li>
+                        </ul>
                     </div>
-                    <div class="welcome-content">
-                        <span class="section-tag">Welcome Message</span>
-                        <h2 class="section-title">A Place Where Every Child <span class="text-highlight">Thrives</span></h2>
-                        <p class="welcome-text">
-                            Welcome to Fountain Group of Schools – Tigoni, a vibrant learning community nestled in the serene
-                            environment of Murengeti, Tigoni, Limuru. Since our founding in 2010, we have been dedicated to
-                            providing a transformative education that empowers every learner to discover their unique potential.
-                        </p>
-                        <p class="welcome-text">
-                            Our school offers the Competency-Based Curriculum (CBC) from Playgroup through Grade 9, supported
-                            by modern facilities including ICT centres, science laboratories, a well-stocked library, and
-                            spacious sports grounds. We believe in nurturing the whole child—academically, socially,
-                            physically, and spiritually.
-                        </p>
-                        <div class="welcome-stats">
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="2010">2010</span>
-                                <span class="stat-label">Founded</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="14">14</span>
-                                <span class="stat-label">Grade Levels</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-number" data-count="20">20</span>
-                                <span class="stat-label">+ Activities</span>
-                            </div>
-                        </div>
-                        <a href="about.html" class="btn btn-primary">Learn More About Us</a>
+                    <div class="timeline">
+                        <div class="timeline-item"><h4>2010</h4><p>School founded with Playgroup to Grade 3.</p></div>
+                        <div class="timeline-item"><h4>2015</h4><p>Introduction of upper primary and first computer lab.</p></div>
+                        <div class="timeline-item"><h4>2018</h4><p>Boarding facilities opened.</p></div>
+                        <div class="timeline-item"><h4>2023</h4><p>Junior Secondary (Grade 7–9) launched under CBC.</p></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Why Choose Fountain -->
-        <section class="why-choose-section section-padding bg-light reveal-on-scroll">
+        <!-- ACADEMICS -->
+        <section id="academics" class="section-padding reveal-on-scroll">
             <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Why Choose Fountain</span>
-                    <h2 class="section-title">What Makes Us <span class="text-highlight">Exceptional</span></h2>
-                    <p class="section-subtitle">Discover the Fountain difference—where tradition meets innovation in a nurturing environment.</p>
-                </div>
-                <div class="features-grid">
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="32" rx="4" stroke="#1a5c3a" stroke-width="2.5" fill="none"/><line x1="4" y1="18" x2="44" y2="18" stroke="#1a5c3a" stroke-width="2"/><circle cx="16" cy="13" r="2" fill="#1a5c3a"/><circle cx="24" cy="13" r="2" fill="#1a5c3a"/><circle cx="32" cy="13" r="2" fill="#1a5c3a"/></svg>
-                        </div>
-                        <h3>Academic Excellence</h3>
-                        <p>Rigorous CBC curriculum delivered by dedicated educators in small class sizes, ensuring personalized attention and outstanding learning outcomes.</p>
-                    </div>
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="6" y="10" width="36" height="28" rx="3" stroke="#1a5c3a" stroke-width="2.5" fill="none"/><rect x="12" y="16" width="10" height="8" rx="1" stroke="#1a5c3a" stroke-width="2"/><rect x="26" y="16" width="10" height="8" rx="1" stroke="#1a5c3a" stroke-width="2"/><rect x="12" y="28" width="24" height="4" rx="1" stroke="#1a5c3a" stroke-width="2"/></svg>
-                        </div>
-                        <h3>Technology Integration</h3>
-                        <p>Digital classrooms and ICT centres equip students with 21st-century skills, preparing them for a technology-driven future.</p>
-                    </div>
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#1a5c3a" stroke-width="2.5" fill="none"/><path d="M14 36 Q24 24 34 36" stroke="#1a5c3a" stroke-width="2.5" fill="none"/><line x1="10" y1="40" x2="38" y2="40" stroke="#1a5c3a" stroke-width="2.5"/></svg>
-                        </div>
-                        <h3>Character Development</h3>
-                        <p>Partnerships with Scripture Union and Go Kids International foster spiritual growth, leadership, and strong moral values.</p>
-                    </div>
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="20" width="32" height="20" rx="2" stroke="#1a5c3a" stroke-width="2.5" fill="none"/><rect x="14" y="12" width="20" height="10" rx="2" stroke="#1a5c3a" stroke-width="2.5" fill="none"/><circle cx="24" cy="30" r="4" stroke="#1a5c3a" stroke-width="2"/></svg>
-                        </div>
-                        <h3>Modern Boarding</h3>
-                        <p>Safe, comfortable dormitories with warm water, 24/7 supervision, and a home-like atmosphere for boarding students.</p>
-                    </div>
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#1a5c3a" stroke-width="2.5" fill="none"/><circle cx="24" cy="24" r="8" stroke="#1a5c3a" stroke-width="2"/><line x1="24" y1="4" x2="24" y2="12" stroke="#1a5c3a" stroke-width="2.5"/><line x1="24" y1="36" x2="24" y2="44" stroke="#1a5c3a" stroke-width="2.5"/><line x1="4" y1="24" x2="12" y2="24" stroke="#1a5c3a" stroke-width="2.5"/><line x1="36" y1="24" x2="44" y2="24" stroke="#1a5c3a" stroke-width="2.5"/></svg>
-                        </div>
-                        <h3>Holistic Development</h3>
-                        <p>Over 20 co-curricular activities including sports, music, drama, chess, debate, and educational trips nurture well-rounded individuals.</p>
-                    </div>
-                    <div class="feature-card glass-card">
-                        <div class="feature-icon">
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M6 36 L18 16 L28 28 L38 12 L44 20" stroke="#1a5c3a" stroke-width="2.5" fill="none" stroke-linecap="round"/><rect x="4" y="34" width="40" height="8" rx="2" stroke="#1a5c3a" stroke-width="2" fill="none"/></svg>
-                        </div>
-                        <h3>Safe Environment</h3>
-                        <p>Secure campus with comprehensive security measures, health services, and a supportive community that prioritizes student wellbeing.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Academics Preview -->
-        <section class="academics-preview section-padding reveal-on-scroll">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Academics</span>
-                    <h2 class="section-title">Comprehensive <span class="text-highlight">CBC Education</span></h2>
-                    <p class="section-subtitle">From Playgroup to Grade 9, our curriculum is designed to build strong foundations and inspire lifelong learning.</p>
-                </div>
+                <div class="text-center"><span class="section-tag">Academics</span><h2 class="section-title">CBC <span class="text-highlight">Education</span></h2></div>
                 <div class="grade-levels-grid">
-                    <a href="academics.html#playgroup" class="grade-card glass-card">
-                        <div class="grade-icon">🎨</div>
-                        <h4>Playgroup</h4>
-                        <p>Early learning through play</p>
-                    </a>
-                    <a href="academics.html#pp1" class="grade-card glass-card">
-                        <div class="grade-icon">📚</div>
-                        <h4>PP1 & PP2</h4>
-                        <p>Foundation years</p>
-                    </a>
-                    <a href="academics.html#grade1" class="grade-card glass-card">
-                        <div class="grade-icon">✏️</div>
-                        <h4>Grades 1–3</h4>
-                        <p>Lower primary</p>
-                    </a>
-                    <a href="academics.html#grade4" class="grade-card glass-card">
-                        <div class="grade-icon">🔬</div>
-                        <h4>Grades 4–6</h4>
-                        <p>Upper primary</p>
-                    </a>
-                    <a href="academics.html#grade7" class="grade-card glass-card">
-                        <div class="grade-icon">💡</div>
-                        <h4>Grades 7–9</h4>
-                        <p>Junior secondary</p>
-                    </a>
+                    <div class="grade-card glass-card"><h4>Playgroup</h4><p>Play‑based early learning</p></div>
+                    <div class="grade-card glass-card"><h4>PP1 & PP2</h4><p>Foundation skills</p></div>
+                    <div class="grade-card glass-card"><h4>Grades 1‑3</h4><p>Lower primary</p></div>
+                    <div class="grade-card glass-card"><h4>Grades 4‑6</h4><p>Upper primary</p></div>
+                    <div class="grade-card glass-card"><h4>Grades 7‑9</h4><p>Junior secondary</p></div>
                 </div>
-                <div class="text-center mt-3">
-                    <a href="academics.html" class="btn btn-primary">Explore Our Academics</a>
+                <p class="text-center mt-2">All classes integrate technology, practical assessments, and a learner‑centred approach.</p>
+            </div>
+        </section>
+
+        <!-- BOARDING -->
+        <section id="boarding" class="section-padding bg-light reveal-on-scroll">
+            <div class="container">
+                <div class="text-center"><span class="section-tag">Boarding</span><h2 class="section-title">Modern <span class="text-highlight">Dormitories</span></h2></div>
+                <div class="features-grid">
+                    <div class="feature-card glass-card"><h4>Separate Dorms</h4><p>For boys and girls</p></div>
+                    <div class="feature-card glass-card"><h4>24/7 Supervision</h4><p>Qualified matrons and patrons</p></div>
+                    <div class="feature-card glass-card"><h4>Warm Water</h4><p>Comfortable bathing facilities</p></div>
+                    <div class="feature-card glass-card"><h4>Health Services</h4><p>On‑call nurse and first aid</p></div>
+                    <div class="feature-card glass-card"><h4>Security</h4><p>Gated compound with CCTV</p></div>
+                    <div class="feature-card glass-card"><h4>Recreation</h4><p>Common rooms with games</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- Facilities Preview -->
-        <section class="facilities-preview section-padding bg-light reveal-on-scroll">
+        <!-- FACILITIES -->
+        <section id="facilities" class="section-padding reveal-on-scroll">
             <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Our Facilities</span>
-                    <h2 class="section-title">World-Class <span class="text-highlight">Learning Spaces</span></h2>
-                </div>
-                <div class="facilities-carousel" id="facilitiesCarousel">
-                    <div class="facility-slide glass-card">
-                        <div class="facility-image" style="background-image: url('images/facility-ict.jpg');"></div>
-                        <h4>ICT Centre</h4>
-                        <p>State-of-the-art computer laboratories for digital literacy.</p>
-                    </div>
-                    <div class="facility-slide glass-card">
-                        <div class="facility-image" style="background-image: url('images/facility-science.jpg');"></div>
-                        <h4>Science Laboratories</h4>
-                        <p>Fully equipped labs for hands-on scientific exploration.</p>
-                    </div>
-                    <div class="facility-slide glass-card">
-                        <div class="facility-image" style="background-image: url('images/facility-library.jpg');"></div>
-                        <h4>Library</h4>
-                        <p>A rich collection of books and digital resources.</p>
-                    </div>
-                    <div class="facility-slide glass-card">
-                        <div class="facility-image" style="background-image: url('images/facility-sports.jpg');"></div>
-                        <h4>Sports Grounds</h4>
-                        <p>Expansive fields for football, athletics, and more.</p>
-                    </div>
-                </div>
-                <div class="carousel-dots" id="facilitiesDots"></div>
-                <div class="text-center mt-2">
-                    <a href="facilities.html" class="btn btn-primary">View All Facilities</a>
+                <div class="text-center"><span class="section-tag">Facilities</span><h2 class="section-title">World‑Class <span class="text-highlight">Learning Spaces</span></h2></div>
+                <div class="facilities-carousel">
+                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500')"></div><h4 style="padding:16px 20px 4px">ICT Centre</h4><p style="padding:0 20px 20px;color:var(--tm)">Computer laboratories for digital literacy</p></div>
+                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1564981797816-104b4d3e4a9e?w=500')"></div><h4 style="padding:16px 20px 4px">Science Labs</h4><p style="padding:0 20px 20px;color:var(--tm)">Fully equipped for experiments</p></div>
+                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b046da?w=500')"></div><h4 style="padding:16px 20px 4px">Library</h4><p style="padding:0 20px 20px;color:var(--tm)">Rich collection of books and digital resources</p></div>
+                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500')"></div><h4 style="padding:16px 20px 4px">Sports Fields</h4><p style="padding:0 20px 20px;color:var(--tm)">Expansive grounds for football, athletics</p></div>
+                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500')"></div><h4 style="padding:16px 20px 4px">Digital Classrooms</h4><p style="padding:0 20px 20px;color:var(--tm)">Interactive smart boards and tablets</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- Student Life Preview -->
-        <section class="student-life-preview section-padding reveal-on-scroll">
+        <!-- STUDENT LIFE -->
+        <section id="student-life" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Student Life</span>
-                    <h2 class="section-title">Beyond the <span class="text-highlight">Classroom</span></h2>
-                </div>
+                <div class="text-center"><span class="section-tag">Student Life</span><h2 class="section-title">Beyond the <span class="text-highlight">Classroom</span></h2></div>
                 <div class="activities-grid">
-                    <div class="activity-card glass-card">
-                        <div class="activity-icon">⚽</div>
-                        <h4>Sports</h4>
-                        <p>Football, basketball, volleyball, athletics, swimming, and roller skating.</p>
-                    </div>
-                    <div class="activity-card glass-card">
-                        <div class="activity-icon">🎭</div>
-                        <h4>Performing Arts</h4>
-                        <p>Music, drama, and dance programs that build confidence and creativity.</p>
-                    </div>
-                    <div class="activity-card glass-card">
-                        <div class="activity-icon">♟️</div>
-                        <h4>Clubs & Societies</h4>
-                        <p>Chess, debate, French club, computer club, and more.</p>
-                    </div>
-                    <div class="activity-card glass-card">
-                        <div class="activity-icon">🌍</div>
-                        <h4>Educational Trips</h4>
-                        <p>Excursions that bring learning to life beyond the classroom walls.</p>
-                    </div>
+                    <div class="grade-card glass-card">⚽ Football</div>
+                    <div class="grade-card glass-card">🏀 Basketball</div>
+                    <div class="grade-card glass-card">🏐 Volleyball</div>
+                    <div class="grade-card glass-card">🏊 Swimming</div>
+                    <div class="grade-card glass-card">🛼 Roller Skating</div>
+                    <div class="grade-card glass-card">🎵 Music</div>
+                    <div class="grade-card glass-card">🎭 Drama</div>
+                    <div class="grade-card glass-card">♟️ Chess</div>
                 </div>
-                <div class="text-center mt-3">
-                    <a href="student-life.html" class="btn btn-primary">Discover Student Life</a>
+                <p class="text-center mt-2">Clubs: French, Computer, Debate, Environmental · Partnerships with <strong>Scripture Union</strong> and <strong>Go Kids International</strong>.</p>
+            </div>
+        </section>
+
+        <!-- ADMISSIONS -->
+        <section id="admissions" class="section-padding reveal-on-scroll">
+            <div class="container">
+                <div class="text-center"><span class="section-tag">Admissions</span><h2 class="section-title">Join <span class="text-highlight">Fountain</span></h2></div>
+                <div class="contact-grid">
+                    <div class="glass-card" style="padding:30px">
+                        <h3>Application Process</h3>
+                        <ol style="margin:16px 0;padding-left:20px"><li>Submit enquiry</li><li>School tour</li><li>Assessment</li><li>Admission offer</li></ol>
+                        <a href="#" class="btn btn-primary">Download Prospectus (PDF)</a>
+                    </div>
+                    <div class="glass-card" style="padding:30px">
+                        <h3>FAQs</h3>
+                        <div class="accordion-item"><div class="accordion-header">What curriculum do you follow? ▾</div><div class="accordion-content"><p>Competency‑Based Curriculum (CBC) from Playgroup to Grade 9.</p></div></div>
+                        <div class="accordion-item"><div class="accordion-header">Is boarding available? ▾</div><div class="accordion-content"><p>Yes, modern boarding for both boys and girls.</p></div></div>
+                        <div class="accordion-item"><div class="accordion-header">How can I apply? ▾</div><div class="accordion-content"><p>Contact us or visit the school for an application form.</p></div></div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Testimonials -->
-        <section class="testimonials-section section-padding bg-light reveal-on-scroll">
+        <!-- GALLERY -->
+        <section id="gallery" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Testimonials</span>
-                    <h2 class="section-title">What Our Community <span class="text-highlight">Says</span></h2>
-                </div>
-                <div class="testimonials-slider" id="testimonialsSlider">
-                    <div class="testimonial-slide active">
-                        <div class="testimonial-card glass-card">
-                            <div class="testimonial-quote">"</div>
-                            <p class="testimonial-text">Fountain Group of Schools has provided an incredible learning environment for our child. The teachers are dedicated and the facilities are top-notch. We've seen remarkable growth in our daughter's confidence and academic performance.</p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar" style="background-color: #2d8a56;">P</div>
-                                <div>
-                                    <strong>Parent of Grade 5 Student</strong>
-                                    <span>Fountain Tigoni Community</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card glass-card">
-                            <div class="testimonial-quote">"</div>
-                            <p class="testimonial-text">The boarding facilities at Fountain are exceptional. Our son feels at home, and we have peace of mind knowing he is well-supervised and cared for. The school's focus on character development is truly commendable.</p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar" style="background-color: #1a5c3a;">M</div>
-                                <div>
-                                    <strong>Parent of Boarding Student</strong>
-                                    <span>Fountain Tigoni Community</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-slide">
-                        <div class="testimonial-card glass-card">
-                            <div class="testimonial-quote">"</div>
-                            <p class="testimonial-text">The CBC implementation at Fountain is outstanding. The digital classrooms and hands-on learning approach have made a significant difference in how our children engage with their studies. Highly recommended!</p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar" style="background-color: #4caf50;">A</div>
-                                <div>
-                                    <strong>Parent of Two Students</strong>
-                                    <span>Fountain Tigoni Community</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-controls">
-                    <button class="testimonial-btn prev" id="testimonialPrev" aria-label="Previous testimonial"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
-                    <div class="testimonial-dots" id="testimonialDots"></div>
-                    <button class="testimonial-btn next" id="testimonialNext" aria-label="Next testimonial"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
-                </div>
-            </div>
-        </section>
-
-        <!-- News Preview -->
-        <section class="news-preview section-padding reveal-on-scroll">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Latest News</span>
-                    <h2 class="section-title">School <span class="text-highlight">Updates</span></h2>
-                </div>
-                <div class="news-grid">
-                    <article class="news-card glass-card">
-                        <div class="news-image" style="background-image: url('images/news-1.jpg');">
-                            <span class="news-category">Academics</span>
-                        </div>
-                        <div class="news-content">
-                            <span class="news-date">June 2026</span>
-                            <h4>End of Term Academic Review</h4>
-                            <p>Celebrating student achievements and progress across all grade levels.</p>
-                            <a href="news.html" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-                    <article class="news-card glass-card">
-                        <div class="news-image" style="background-image: url('images/news-2.jpg');">
-                            <span class="news-category">Sports</span>
-                        </div>
-                        <div class="news-content">
-                            <span class="news-date">May 2026</span>
-                            <h4>Inter-School Sports Tournament</h4>
-                            <p>Fountain students showcase their athletic talents in football and athletics.</p>
-                            <a href="news.html" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-                    <article class="news-card glass-card">
-                        <div class="news-image" style="background-image: url('images/news-3.jpg');">
-                            <span class="news-category">Events</span>
-                        </div>
-                        <div class="news-content">
-                            <span class="news-date">April 2026</span>
-                            <h4>Music Festival Highlights</h4>
-                            <p>Our students delivered stunning performances at the annual music festival.</p>
-                            <a href="news.html" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-                </div>
-                <div class="text-center mt-3">
-                    <a href="news.html" class="btn btn-primary">View All News</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Preview -->
-        <section class="gallery-preview section-padding bg-light reveal-on-scroll">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="section-tag">Gallery</span>
-                    <h2 class="section-title">Campus <span class="text-highlight">Moments</span></h2>
-                </div>
+                <div class="text-center"><span class="section-tag">Gallery</span><h2 class="section-title">Campus <span class="text-highlight">Moments</span></h2></div>
                 <div class="gallery-masonry">
-                    <div class="gallery-item tall" style="background-image: url('images/gallery-1.jpg');"><div class="gallery-caption">Main Campus</div></div>
-                    <div class="gallery-item" style="background-image: url('images/gallery-2.jpg');"><div class="gallery-caption">Digital Classroom</div></div>
-                    <div class="gallery-item wide" style="background-image: url('images/gallery-3.jpg');"><div class="gallery-caption">Sports Day</div></div>
-                    <div class="gallery-item" style="background-image: url('images/gallery-4.jpg');"><div class="gallery-caption">Science Lab</div></div>
-                    <div class="gallery-item tall" style="background-image: url('images/gallery-5.jpg');"><div class="gallery-caption">Library</div></div>
-                    <div class="gallery-item" style="background-image: url('images/gallery-6.jpg');"><div class="gallery-caption">Playground</div></div>
-                </div>
-                <div class="text-center mt-3">
-                    <a href="gallery.html" class="btn btn-primary">View Full Gallery</a>
+                    <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400')"><div class="gallery-caption">Main Campus</div></div>
+                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400')"><div class="gallery-caption">Digital Classroom</div></div>
+                    <div class="gallery-item wide" style="background-image:url('https://images.unsplash.com/photo-1526976668912-1a811878dd37?w=600')"><div class="gallery-caption">Sports Day</div></div>
+                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1564981797816-104b4d3e4a9e?w=400')"><div class="gallery-caption">Science Lab</div></div>
+                    <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b046da?w=400')"><div class="gallery-caption">Library</div></div>
+                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400')"><div class="gallery-caption">Playground</div></div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Preview -->
-        <section class="contact-preview section-padding reveal-on-scroll">
+        <!-- NEWS -->
+        <section id="news" class="section-padding reveal-on-scroll">
             <div class="container">
-                <div class="contact-preview-grid">
-                    <div class="contact-info-card glass-card">
-                        <span class="section-tag">Get In Touch</span>
-                        <h2 class="section-title">Contact <span class="text-highlight">Us</span></h2>
-                        <div class="contact-detail">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a5c3a" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"/></svg>
-                            <span>Murengeti, Tigoni, Limuru, Kiambu County</span>
-                        </div>
-                        <div class="contact-detail">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a5c3a" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            <span>011 569 0747</span>
-                        </div>
-                        <div class="contact-detail">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a5c3a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <span>tigoni@fountainschools.ac.ke</span>
-                        </div>
-                        <a href="contact.html" class="btn btn-primary mt-2">Get In Touch</a>
+                <div class="text-center"><span class="section-tag">News & Events</span><h2 class="section-title">School <span class="text-highlight">Updates</span></h2></div>
+                <div class="news-grid">
+                    <article class="glass-card"><div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500')"><span class="news-category">Academics</span></div><div style="padding:20px"><h4>End of Term Review</h4><p>Celebrating outstanding learner progress across all grades.</p></div></article>
+                    <article class="glass-card"><div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1461896836934-6f907e3d1e2f?w=500')"><span class="news-category">Sports</span></div><div style="padding:20px"><h4>Inter‑School Tournament</h4><p>Our football and athletics teams shine in regional competitions.</p></div></article>
+                    <article class="glass-card"><div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500')"><span class="news-category">Music</span></div><div style="padding:20px"><h4>Music Festival Highlights</h4><p>Stunning choir and instrumental performances.</p></div></article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section-padding bg-light reveal-on-scroll">
+            <div class="container">
+                <div class="text-center"><span class="section-tag">Contact</span><h2 class="section-title">Get in <span class="text-highlight">Touch</span></h2></div>
+                <div class="contact-grid">
+                    <div class="glass-card" style="padding:40px">
+                        <div class="contact-detail">📍 Murengeti, Tigoni, Limuru, Kiambu County</div>
+                        <div class="contact-detail">📞 011 569 0747</div>
+                        <div class="contact-detail">📱 +254 727 017 890</div>
+                        <div class="contact-detail">✉️ tigoni@fountainschools.ac.ke</div>
+                        <form style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
+                            <input type="text" placeholder="Your Name" required style="padding:10px;border-radius:8px;border:1px solid #ccc">
+                            <input type="email" placeholder="Email" required style="padding:10px;border-radius:8px">
+                            <textarea placeholder="Message" rows="3" style="padding:10px;border-radius:8px"></textarea>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
                     </div>
-                    <div class="contact-map-card glass-card">
-                        <div class="map-placeholder">
-                            <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="35" r="12" stroke="#1a5c3a" stroke-width="3" fill="#e8f5e9"/><path d="M40 47 L30 65 L50 65 Z" fill="#1a5c3a" opacity="0.6"/></svg>
-                            <p>📍 Murengeti, Tigoni, Limuru<br>Kiambu County, Kenya</p>
-                            <a href="https://maps.google.com/?q=Murengeti+Tigoni+Limuru+Kiambu+County+Kenya" target="_blank" rel="noopener" class="btn btn-outline">Open in Google Maps</a>
-                        </div>
+                    <div class="map-placeholder glass-card" style="padding:40px;display:flex;flex-direction:column;justify-content:center;align-items:center">
+                        <svg width="80" height="80"><circle cx="40" cy="35" r="12" stroke="#1a5c3a" stroke-width="3" fill="#e8f5e9"/><path d="M40 47 L30 65 L50 65 Z" fill="#1a5c3a"/></svg>
+                        <p><strong>Murengeti, Tigoni, Limuru</strong><br>Kiambu County, Kenya</p>
+                        <a href="https://maps.google.com/?q=Murengeti+Tigoni+Limuru+Kenya" target="_blank" class="btn btn-outline mt-2">Open in Google Maps</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-wave">
-            <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                <path d="M0 40 C240 90 480 0 720 40 C960 80 1200 10 1440 50 L1440 100 L0 100 Z" fill="var(--footer-wave-color, #f8f9fa)"/>
-            </svg>
-        </div>
-        <div class="footer-content">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-col footer-about">
-                        <div class="footer-logo">
-                            <svg width="40" height="40" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" fill="#fff" stroke="#2d8a56" stroke-width="2"/><text x="24" y="29" text-anchor="middle" font-size="14" fill="#1a5c3a" font-weight="700">FGS</text></svg>
-                            <span>Fountain Group of Schools – Tigoni</span>
-                        </div>
-                        <p>A premier private day and boarding school offering CBC education from Playgroup to Grade 9 in Murengeti, Tigoni, Limuru, Kiambu County.</p>
-                        <div class="social-links">
-                            <a href="#" aria-label="Facebook" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-                            <a href="#" aria-label="Twitter" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-                            <a href="#" aria-label="Instagram" class="social-link"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Quick Links</h4>
-                        <ul>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="academics.html">Academics</a></li>
-                            <li><a href="boarding.html">Boarding</a></li>
-                            <li><a href="admissions.html">Admissions</a></li>
-                            <li><a href="gallery.html">Gallery</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Contact Info</h4>
-                        <ul class="footer-contact-list">
-                            <li>📍 Murengeti, Tigoni, Limuru, Kiambu County</li>
-                            <li>📞 011 569 0747</li>
-                            <li>📱 +254 727 017 890</li>
-                            <li>✉️ tigoni@fountainschools.ac.ke</li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Newsletter</h4>
-                        <p>Subscribe to receive school updates and news.</p>
-                        <form class="newsletter-form" id="newsletterForm">
-                            <input type="email" placeholder="Your email address" required aria-label="Email for newsletter">
-                            <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; <span id="currentYear">2026</span> Fountain Group of Schools – Tigoni. All rights reserved.</p>
-                    <div class="footer-bottom-links">
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms of Service</a>
-                    </div>
-                </div>
+    <footer style="background:var(--pd);color:#fff;padding:60px 0 30px;margin-top:80px">
+        <div class="container">
+            <div class="footer-grid">
+                <div><h4>Fountain Group of Schools – Tigoni</h4><p>A premier CBC day and boarding school in Murengeti, Tigoni.</p></div>
+                <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#admissions">Admissions</a></li></ul></div>
+                <div><h4>Contact</h4><p>📍 Murengeti, Tigoni<br>📞 011 569 0747<br>✉️ tigoni@fountainschools.ac.ke</p></div>
+                <div><h4>Newsletter</h4><form style="display:flex;gap:8px"><input type="email" placeholder="Email" required style="padding:10px;border-radius:50px;border:none"><button class="btn btn-primary btn-sm">Subscribe</button></form></div>
             </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.2);padding-top:20px;text-align:center">© 2026 Fountain Group of Schools – Tigoni. All rights reserved.</div>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-    </button>
+    <button class="scroll-to-top" id="scrollToTop">↑</button>
 
-    <!-- Scripts -->
-    <script src="js/script.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/slider.js"></script>
-    <script src="js/form-validation.js"></script>
+    <script>
+        (function(){
+            window.addEventListener('load',()=>document.getElementById('loadingScreen').classList.add('hidden'));
+            const h=document.getElementById('siteHeader'),s=document.getElementById('scrollToTop');
+            window.addEventListener('scroll',()=>{
+                h.style.boxShadow=scrollY>50?'0 4px 20px rgba(0,0,0,0.1)':'none';
+                s.classList.toggle('visible',scrollY>500);
+                document.querySelectorAll('section[id]').forEach(sec=>{
+                    if(scrollY>=sec.offsetTop-100) document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+                    document.querySelector(`.nav-link[href="#${sec.id}"]`)?.classList.add('active');
+                });
+            });
+            s.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+            const mt=document.getElementById('mobileMenuToggle'),mo=document.getElementById('mobileMenuOverlay');
+            mt.addEventListener('click',()=>{mo.classList.toggle('active');document.body.style.overflow=mo.classList.contains('active')?'hidden':''});
+            document.querySelectorAll('.mobile-nav-link').forEach(l=>l.addEventListener('click',()=>{mo.classList.remove('active');document.body.style.overflow=''}));
+            document.getElementById('darkModeToggle').addEventListener('click',()=>{
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode',document.body.classList.contains('dark-mode')?'enabled':'disabled');
+            });
+            if(localStorage.getItem('darkMode')==='enabled') document.body.classList.add('dark-mode');
+            const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')}),{threshold:0.15});
+            document.querySelectorAll('.reveal-on-scroll').forEach(el=>observer.observe(el));
+            document.querySelectorAll('.accordion-header').forEach(btn=>btn.addEventListener('click',()=>btn.nextElementSibling.classList.toggle('open')));
+            const nf=document.querySelector('footer form');if(nf)nf.addEventListener('submit',e=>{e.preventDefault();alert('Thank you for subscribing!');nf.reset()});
+        })();
+    </script>
 </body>
 </html>
