@@ -5,150 +5,787 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Fountain Group of Schools – Tigoni: A premier private day and boarding school in Murengeti, Tigoni, Limuru, Kiambu County, offering CBC education from Playgroup to Grade 9.">
     <meta name="theme-color" content="#1B2F6B">
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="Fountain Group of Schools, Tigoni, Murengeti, Limuru, CBC education, boarding school, day school, Kiambu County, private school">
+    <meta property="og:title" content="Fountain Group of Schools – Tigoni | Empowering Every Learner to Excel">
+    <meta property="og:description" content="A premier private day and boarding school in Murengeti, Tigoni, offering CBC education from Playgroup to Grade 9.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fountainschools.ac.ke/tigoni">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Fountain Group of Schools – Tigoni | Empowering Every Learner to Excel</title>
+    <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ===== CSS Variables ===== */
         :root {
-            --navy: #1B2F6B; --navy-light: #2a457a; --navy-lighter: #3b5998; --navy-dark: #0f1e44;
-            --red: #D62828; --red-light: #e84545;
-            --white: #ffffff; --off-white: #f8f9fa; --light-bg: #f0f2f5;
-            --text-dark: #1e1e1e; --text-medium: #444; --text-light: #666; --text-muted: #777;
-            --glass-bg: rgba(255,255,255,0.7); --glass-border: rgba(255,255,255,0.4); --glass-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            --navy: #1B2F6B;
+            --navy-light: #2a457a;
+            --navy-lighter: #3b5998;
+            --navy-dark: #0f1e44;
+            --red: #D62828;
+            --red-light: #e84545;
+            --white: #ffffff;
+            --off-white: #f8f9fa;
+            --light-bg: #f0f2f5;
+            --text-dark: #1e1e1e;
+            --text-medium: #444;
+            --text-light: #666;
+            --text-muted: #777;
+            --glass-bg: rgba(255,255,255,0.7);
+            --glass-border: rgba(255,255,255,0.4);
+            --glass-shadow: 0 8px 32px rgba(0,0,0,0.06);
             --transition: all .3s cubic-bezier(.4,0,.2,1);
-            --border-radius: 24px; --font-heading: 'Playfair Display',serif; --font-body: 'Inter',sans-serif; --nav-height: 80px;
-            --p: var(--navy); --pl: var(--navy-light); --pl2: var(--navy-lighter); --pd: var(--navy-dark);
-            --accent: var(--red); --accent-light: var(--red-light);
+            --border-radius: 24px;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --nav-height: 80px;
         }
+
         body.dark-mode {
-            --white: #121212; --off-white: #1e1e1e; --light-bg: #1a1a1a;
-            --text-dark: #e0e0e0; --text-medium: #b0b0b0; --text-light: #9e9e9e; --text-muted: #888;
-            --glass-bg: rgba(30,30,30,0.7); --glass-border: rgba(255,255,255,0.08); --glass-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            --navy: #2d4a8e; --navy-light: #3b5ca0; --navy-lighter: #4f6fb2; --navy-dark: #1a2e50;
-            --red: #e84545; --red-light: #f06060;
-            --p: var(--navy); --pl: var(--navy-light); --pl2: var(--navy-lighter); --pd: var(--navy-dark);
-            --accent: var(--red); --accent-light: var(--red-light);
+            --white: #121212;
+            --off-white: #1e1e1e;
+            --light-bg: #1a1a1a;
+            --text-dark: #e0e0e0;
+            --text-medium: #b0b0b0;
+            --text-light: #9e9e9e;
+            --text-muted: #888;
+            --glass-bg: rgba(30,30,30,0.7);
+            --glass-border: rgba(255,255,255,0.08);
+            --glass-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            --navy: #2d4a8e;
+            --navy-light: #3b5ca0;
+            --navy-lighter: #4f6fb2;
+            --navy-dark: #1a2e50;
+            --red: #e84545;
+            --red-light: #f06060;
         }
-        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-        html{scroll-behavior:smooth;font-size:16px}
-        body{font-family:var(--font-body);color:var(--text-dark);background:var(--white);line-height:1.6;overflow-x:hidden;transition:background .4s,color .4s}
-        a{text-decoration:none;color:inherit;transition:var(--transition)}
-        ul{list-style:none}
-        button{cursor:pointer;border:none;background:none;font-family:inherit}
-        .container{max-width:1280px;margin:0 auto;padding:0 24px}
-        .section-padding{padding:100px 0}
-        .bg-light{background:var(--off-white)}
-        .text-center{text-align:center}
-        .mt-2{margin-top:32px}.mt-3{margin-top:48px}
-        .text-highlight{color:var(--accent);font-weight:700}
-        h1,h2,h3,h4,h5,h6{font-family:var(--font-heading);font-weight:700;line-height:1.2;color:var(--text-dark)}
-        .section-tag{display:inline-block;text-transform:uppercase;letter-spacing:2px;font-weight:600;font-size:.85rem;color:var(--accent);margin-bottom:12px}
-        .section-title{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:16px}
-        .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;font-weight:600;border-radius:50px;font-size:.95rem;transition:var(--transition);border:2px solid transparent;cursor:pointer}
-        .btn-primary{background:var(--p);color:#fff;box-shadow:0 4px 14px rgba(27,47,107,0.3)}
-        .btn-primary:hover{background:var(--pl);transform:translateY(-2px);box-shadow:0 8px 20px rgba(27,47,107,0.4)}
-        .btn-outline{background:transparent;border-color:var(--p);color:var(--p)}
-        .btn-outline:hover{background:var(--p);color:#fff}
-        .btn-lg{padding:16px 36px;font-size:1.05rem}.btn-sm{padding:8px 20px;font-size:.85rem}
-        .btn-apply{background:var(--accent);color:#fff;font-weight:700;box-shadow:0 4px 15px rgba(214,40,40,0.4)}
-        .btn-apply:hover{background:var(--accent-light);transform:translateY(-2px)}
-        .glass-card{background:var(--glass-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-radius:var(--border-radius);box-shadow:var(--glass-shadow);transition:var(--transition)}
-        .glass-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.08)}
-        .skip-to-content{position:absolute;top:-100%;left:50%;transform:translateX(-50%);background:var(--p);color:#fff;padding:12px 24px;border-radius:0 0 8px 8px;z-index:10000;font-weight:600}
-        .skip-to-content:focus{top:0}
-        .loading-screen{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--white);display:flex;align-items:center;justify-content:center;z-index:99999;transition:opacity .5s,visibility .5s}
-        .loading-screen.hidden{opacity:0;visibility:hidden}
-        .site-header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:var(--glass-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--glass-border);height:var(--nav-height)}
-        .header-container{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:100%}
-        .logo-link{display:flex;align-items:center;gap:12px}
-        .logo-link svg{display:block;height:72px;width:auto}
-        .main-nav .nav-list{display:flex;gap:32px}
-        .nav-link{font-weight:500;font-size:.9rem;color:var(--text-medium);padding:8px 0;position:relative}
-        .nav-link::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--p);transition:width .3s}
-        .nav-link:hover,.nav-link.active{color:var(--p)}
-        .nav-link.active::after,.nav-link:hover::after{width:100%}
-        .header-actions{display:flex;align-items:center;gap:16px}
-        .dark-mode-toggle{color:var(--text-medium);padding:8px;border-radius:50%}
-        .sun-icon,.moon-icon{display:none}
-        body:not(.dark-mode) .sun-icon{display:block}
-        body.dark-mode .moon-icon{display:block}
-        .mobile-menu-toggle{display:none;flex-direction:column;gap:5px}
-        .hamburger-line{width:24px;height:2px;background:var(--text-dark)}
-        .mobile-menu-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:var(--white);z-index:999;transform:translateX(100%);transition:transform .4s;display:flex;align-items:center;justify-content:center}
-        .mobile-menu-overlay.active{transform:translateX(0)}
-        .mobile-nav-link{font-size:1.5rem;font-weight:600}
-        .hero-section{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-        .hero-bg-image{position:absolute;top:0;left:0;width:100%;height:100%;background-size:cover;background-position:center;filter:brightness(0.6);background-color:var(--navy)}
-        .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,rgba(27,47,107,0.8),rgba(0,0,0,0.5));z-index:1}
-        .hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 24px;color:#fff}
-        .hero-badge{display:inline-block;background:rgba(255,255,255,0.2);backdrop-filter:blur(8px);padding:8px 24px;border-radius:50px;font-weight:500;margin-bottom:24px}
-        .hero-headline{font-size:clamp(2.8rem,7vw,4.8rem);font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px}
-        .hero-subheading{font-size:1.15rem;color:rgba(255,255,255,0.9);margin-bottom:40px;max-width:700px;margin-inline:auto}
-        .hero-buttons{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
-        .hero-scroll-indicator{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.8);animation:bounce 2s infinite}
-        @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0) translateX(-50%)}40%{transform:translateY(-10px) translateX(-50%)}60%{transform:translateY(-5px) translateX(-50%)}}
-        .pulse-animation{animation:pulse 2s infinite}
-        @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(214,40,40,0.5)}70%{box-shadow:0 0 0 15px rgba(214,40,40,0)}100%{box-shadow:0 0 0 0 rgba(214,40,40,0)}}
-        .reveal-on-scroll{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
-        .reveal-on-scroll.revealed{opacity:1;transform:translateY(0)}
-        .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-        .feature-card{padding:40px 30px;text-align:center}
-        .welcome-grid,.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-        .welcome-image-container{border-radius:32px;overflow:hidden;height:500px}
-        .welcome-image{width:100%;height:100%;background-size:cover;background-position:center}
-        .welcome-stats{display:flex;gap:40px;margin:32px 0}
-        .stat-number{font-size:2.2rem;font-weight:800;color:var(--p);font-family:var(--font-heading)}
-        .grade-levels-grid,.activities-grid{display:flex;justify-content:center;gap:24px;flex-wrap:wrap}
-        .grade-card{padding:30px 24px;text-align:center;width:180px}
-        .facilities-carousel{display:flex;gap:24px;overflow-x:auto;padding:20px 0;scroll-snap-type:x mandatory}
-        .facility-slide{min-width:280px;scroll-snap-align:start}
-        .facility-image{height:200px;background-size:cover;background-position:center}
-        .news-grid,.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
-        .news-image{height:200px;background-size:cover;position:relative}
-        .news-category{position:absolute;top:16px;left:16px;background:var(--p);color:#fff;padding:4px 12px;border-radius:50px;font-size:.8rem}
-        .gallery-masonry{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:16px}
-        .gallery-item{background-size:cover;background-position:center;border-radius:16px;position:relative;overflow:hidden}
-        .gallery-item.tall{grid-row:span 2}
-        .gallery-item.wide{grid-column:span 2}
-        .gallery-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,0.7));color:#fff;padding:16px;opacity:0;transition:.3s}
-        .gallery-item:hover .gallery-caption{opacity:1}
-        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-        .contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:16px;color:var(--text-medium)}
-        .timeline{position:relative;padding-left:40px;border-left:2px solid var(--pl)}
-        .timeline-item{margin-bottom:30px;position:relative}
-        .timeline-item::before{content:'';position:absolute;left:-10px;top:5px;width:18px;height:18px;background:var(--p);border-radius:50%}
-        .accordion-item{border-bottom:1px solid rgba(27,47,107,0.1)}
-        .accordion-header{padding:16px 0;font-weight:600;cursor:pointer;display:flex;justify-content:space-between}
-        .accordion-content{max-height:0;overflow:hidden;transition:max-height .4s}
-        .accordion-content.open{max-height:300px}
-        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:40px}
-        .scroll-to-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;z-index:99;opacity:0;visibility:hidden;transform:translateY(20px);transition:var(--transition)}
-        .scroll-to-top.visible{opacity:1;visibility:visible;transform:translateY(0)}
-        @media(max-width:1024px){.features-grid,.gallery-masonry{grid-template-columns:repeat(2,1fr)}.news-grid{grid-template-columns:1fr 1fr}}
-        @media(max-width:900px){.main-nav{display:none}.mobile-menu-toggle{display:flex}.welcome-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.gallery-masonry{grid-template-columns:repeat(2,1fr)}}
-        @media(max-width:600px){.features-grid,.activities-grid,.news-grid,.gallery-masonry{grid-template-columns:1fr}.gallery-item.wide{grid-column:span 1}.footer-grid{grid-template-columns:1fr}.hero-buttons{flex-direction:column;align-items:center}}
+
+        /* ===== Reset & Base ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background .4s, color .4s;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        button { cursor: pointer; border: none; background: none; font-family: inherit; }
+        img { max-width: 100%; display: block; }
+
+        /* ===== Utilities ===== */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .section-padding { padding: 100px 0; }
+        .bg-light { background: var(--off-white); }
+        .text-center { text-align: center; }
+        .mt-2 { margin-top: 32px; }
+        .mt-3 { margin-top: 48px; }
+        .text-highlight { color: var(--red); font-weight: 700; }
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+        .section-tag {
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: .85rem;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            margin-bottom: 16px;
+        }
+
+        /* ===== Buttons ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 50px;
+            font-size: .95rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--navy);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(27,47,107,0.3);
+        }
+        .btn-primary:hover {
+            background: var(--navy-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(27,47,107,0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            border-color: var(--navy);
+            color: var(--navy);
+        }
+        .btn-outline:hover {
+            background: var(--navy);
+            color: #fff;
+        }
+        .btn-lg { padding: 16px 36px; font-size: 1.05rem; }
+        .btn-sm { padding: 8px 20px; font-size: .85rem; }
+        .btn-apply {
+            background: var(--red);
+            color: #fff;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(214,40,40,0.4);
+        }
+        .btn-apply:hover {
+            background: var(--red-light);
+            transform: translateY(-2px);
+        }
+
+        /* ===== Cards ===== */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--border-radius);
+            box-shadow: var(--glass-shadow);
+            transition: var(--transition);
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+        }
+
+        /* ===== Skip Link ===== */
+        .skip-to-content {
+            position: absolute;
+            top: -100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--navy);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 0 0 8px 8px;
+            z-index: 10000;
+            font-weight: 600;
+        }
+        .skip-to-content:focus { top: 0; }
+
+        /* ===== Loading Screen ===== */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity .5s, visibility .5s;
+        }
+        .loading-screen.hidden { opacity: 0; visibility: hidden; }
+        .loading-screen svg {
+            width: 80px;
+            height: 80px;
+        }
+        .loading-screen p {
+            margin-top: 16px;
+            font-weight: 600;
+            color: var(--navy);
+            font-family: var(--font-heading);
+        }
+
+        /* ===== Toast Notification ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--navy);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            z-index: 9999;
+            font-weight: 500;
+            animation: slideUp 0.4s ease;
+            max-width: 400px;
+        }
+        .toast-success { background: #2e7d32; }
+        .toast-error { background: #c62828; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== Header ===== */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--glass-border);
+            height: var(--nav-height);
+        }
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-link svg {
+            display: block;
+            height: 72px;
+            width: auto;
+        }
+        .main-nav .nav-list {
+            display: flex;
+            gap: 32px;
+        }
+        .nav-link {
+            font-weight: 500;
+            font-size: .9rem;
+            color: var(--text-medium);
+            padding: 8px 0;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--navy);
+            transition: width .3s;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--navy);
+        }
+        .nav-link.active::after,
+        .nav-link:hover::after { width: 100%; }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .dark-mode-toggle {
+            color: var(--text-medium);
+            padding: 8px;
+            border-radius: 50%;
+        }
+        .dark-mode-toggle svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+        .sun-icon { display: block; }
+        .moon-icon { display: none; }
+        body.dark-mode .sun-icon { display: none; }
+        body.dark-mode .moon-icon { display: block; }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 4px;
+        }
+        .hamburger-line {
+            width: 24px;
+            height: 2px;
+            background: var(--text-dark);
+            transition: .3s;
+        }
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 999;
+            transform: translateX(100%);
+            transition: transform .4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mobile-menu-overlay.active { transform: translateX(0); }
+        .mobile-nav-link {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: block;
+            padding: 12px 0;
+            color: var(--text-dark);
+        }
+
+        /* ===== Hero ===== */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.6);
+            background-color: var(--navy);
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(27,47,107,0.8), rgba(0,0,0,0.5));
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 24px;
+            color: #fff;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+        .hero-headline {
+            font-size: clamp(2.8rem, 7vw, 4.8rem);
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero-subheading {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-inline: auto;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.8);
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%,20%,50%,80%,100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-10px) translateX(-50%); }
+            60% { transform: translateY(-5px) translateX(-50%); }
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(214,40,40,0.5); }
+            70% { box-shadow: 0 0 0 15px rgba(214,40,40,0); }
+            100% { box-shadow: 0 0 0 0 rgba(214,40,40,0); }
+        }
+
+        /* ===== Reveal on Scroll ===== */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .8s, transform .8s;
+        }
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Grids ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .feature-card { padding: 40px 30px; text-align: center; }
+
+        .welcome-grid,
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .welcome-image-container {
+            border-radius: 32px;
+            overflow: hidden;
+            height: 500px;
+            background: var(--light-bg);
+        }
+        .welcome-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        .welcome-stats {
+            display: flex;
+            gap: 40px;
+            margin: 32px 0;
+        }
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--navy);
+            font-family: var(--font-heading);
+        }
+
+        .grade-levels-grid,
+        .activities-grid {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .grade-card {
+            padding: 30px 24px;
+            text-align: center;
+            width: 180px;
+        }
+
+        /* ===== Facilities Carousel ===== */
+        .facilities-carousel {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        .facility-slide {
+            min-width: 280px;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+        .facility-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-color: var(--light-bg);
+        }
+        .facility-slide h4 { padding: 16px 20px 4px; }
+        .facility-slide p { padding: 0 20px 20px; color: var(--text-medium); }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .carousel-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: #fff;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        .carousel-btn:hover { background: var(--navy-light); }
+
+        /* ===== Gallery ===== */
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 200px;
+            gap: 16px;
+        }
+        .gallery-item {
+            background-size: cover;
+            background-position: center;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--light-bg);
+        }
+        .gallery-item.tall { grid-row: span 2; }
+        .gallery-item.wide { grid-column: span 2; }
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: #fff;
+            padding: 16px;
+            opacity: 0;
+            transition: .3s;
+        }
+        .gallery-item:hover .gallery-caption { opacity: 1; }
+
+        /* ===== News ===== */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .news-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-color: var(--light-bg);
+        }
+        .news-category {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: var(--navy);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: .8rem;
+        }
+
+        /* ===== Contact ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text-medium);
+        }
+        .map-container {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 100%;
+            min-height: 300px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: var(--border-radius);
+        }
+
+        /* ===== Timeline ===== */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            border-left: 2px solid var(--navy-light);
+        }
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            background: var(--navy);
+            border-radius: 50%;
+        }
+
+        /* ===== Accordion ===== */
+        .accordion-item {
+            border-bottom: 1px solid rgba(27,47,107,0.1);
+        }
+        .accordion-header {
+            padding: 16px 0;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease;
+        }
+        .accordion-content.open { max-height: 300px; }
+
+        /* ===== Footer ===== */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        footer a { color: rgba(255,255,255,0.8); }
+        footer a:hover { color: #fff; }
+
+        /* ===== Scroll to Top ===== */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+        }
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .scroll-to-top svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2.5;
+        }
+
+        /* ===== Form Elements ===== */
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background: var(--white);
+            color: var(--text-dark);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        form input:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: var(--navy);
+            box-shadow: 0 0 0 3px rgba(27,47,107,0.1);
+        }
+        form textarea { resize: vertical; }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 1024px) {
+            .features-grid,
+            .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+            .news-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 900px) {
+            .main-nav { display: none; }
+            .mobile-menu-toggle { display: flex; }
+            .welcome-grid,
+            .about-grid,
+            .contact-grid { grid-template-columns: 1fr; }
+            .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .features-grid,
+            .activities-grid,
+            .news-grid,
+            .gallery-masonry { grid-template-columns: 1fr; }
+            .gallery-item.wide { grid-column: span 1; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .welcome-stats { flex-direction: column; gap: 16px; }
+            .facility-slide { min-width: 240px; }
+            .contact-grid { gap: 24px; }
+        }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <svg width="80" height="80" viewBox="0 0 80 80">
+        <svg viewBox="0 0 80 80">
             <circle cx="40" cy="40" r="35" stroke="#e8f5e9" stroke-width="4" fill="none"/>
             <path d="M40 5 A35 35 0 0 1 75 40" stroke="var(--navy)" stroke-width="4" stroke-linecap="round">
                 <animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="1.2s" repeatCount="indefinite"/>
             </path>
         </svg>
-        <p style="margin-top:16px;font-weight:600;color:var(--navy);font-family:var(--font-heading)">Fountain Group of Schools</p>
+        <p>Fountain Group of Schools</p>
     </div>
 
     <a href="#main-content" class="skip-to-content">Skip to Main Content</a>
 
-    <!-- Header with Detailed Crest Logo -->
+    <!-- Header -->
     <header class="site-header" id="siteHeader">
         <div class="header-container">
             <a href="#home" class="logo-link" aria-label="Fountain Group of Schools – Home">
-                <!-- NEW DETAILED LOGO -->
+                <!-- Improved Logo SVG with better letter spacing -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 480" role="img" aria-label="Fountain Group of Schools Logo">
                     <defs>
                         <filter id="shieldShadow" x="-10%" y="-10%" width="130%" height="130%">
@@ -163,12 +800,9 @@
                         <rect x="172" y="8" width="36" height="16" rx="2"/>
                     </g>
                     <!-- Main Shield -->
-                    <path d="M 190 35 C 190 35, 330 38, 340 75 C 350 140, 320 240, 190 290 C 60 240, 30 140, 40 75 C 50 38, 190 35, 190 35 Z"
-                          fill="var(--navy)" filter="url(#shieldShadow)"/>
-                    <path d="M 190 48 C 190 48, 312 50, 320 78 C 328 135, 303 222, 190 272 C 77 222, 52 135, 60 78 C 68 50, 190 48, 190 48 Z"
-                          fill="var(--white)"/>
-                    <path d="M 190 55 C 190 55, 302 57, 310 80 C 316 130, 295 215, 190 260 C 85 215, 64 130, 70 80 C 78 57, 190 55, 190 55 Z"
-                          fill="none" stroke="var(--navy)" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.4"/>
+                    <path d="M 190 35 C 190 35, 330 38, 340 75 C 350 140, 320 240, 190 290 C 60 240, 30 140, 40 75 C 50 38, 190 35, 190 35 Z" fill="var(--navy)" filter="url(#shieldShadow)"/>
+                    <path d="M 190 48 C 190 48, 312 50, 320 78 C 328 135, 303 222, 190 272 C 77 222, 52 135, 60 78 C 68 50, 190 48, 190 48 Z" fill="var(--white)"/>
+                    <path d="M 190 55 C 190 55, 302 57, 310 80 C 316 130, 295 215, 190 260 C 85 215, 64 130, 70 80 C 78 57, 190 55, 190 55 Z" fill="none" stroke="var(--navy)" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.4"/>
                     <!-- Laurel Wreath -->
                     <g transform="translate(55,85)">
                         <use href="#leaf" transform="rotate(-30) translate(0,-5)"/>
@@ -187,11 +821,11 @@
                     <!-- Stars -->
                     <use href="#star" x="115" y="110" />
                     <use href="#star" x="265" y="110" />
-                    <!-- Monogram -->
+                    <!-- Monogram - better spacing -->
                     <g font-family="Georgia, 'Times New Roman', 'Trajan Pro', serif" font-weight="bold" fill="var(--red)" text-anchor="middle">
-                        <text x="190" y="160" font-size="72">G</text>
-                        <text x="210" y="152" font-size="64">S</text>
-                        <text x="164" y="145" font-size="76">F</text>
+                        <text x="155" y="155" font-size="72">F</text>
+                        <text x="200" y="165" font-size="52">G</text>
+                        <text x="225" y="155" font-size="60">S</text>
                     </g>
                     <!-- Ribbon Banner -->
                     <path d="M 65 260 L 315 260 L 322 282 L 315 302 L 65 302 L 58 282 Z" fill="var(--navy)"/>
@@ -206,7 +840,7 @@
                     <text x="190" y="405" font-family="Georgia, 'Times New Roman', serif" font-weight="500" font-size="9" letter-spacing="2" fill="var(--navy)" text-anchor="middle">EST. 2010 · MURENGETI, TIGONI</text>
                 </svg>
             </a>
-            <nav class="main-nav" id="mainNav">
+            <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
                 <ul class="nav-list">
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
@@ -222,26 +856,39 @@
             </nav>
             <div class="header-actions">
                 <a href="#admissions" class="btn btn-apply pulse-animation">Apply Now</a>
-                <button class="dark-mode-toggle" id="darkModeToggle">
-                    <svg class="sun-icon" width="22" height="22"><circle cx="12" cy="12" r="5"/></svg>
-                    <svg class="moon-icon" width="20" height="20"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                    <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
                 </button>
             </div>
         </div>
     </header>
-    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay" role="dialog" aria-modal="true" aria-label="Mobile navigation">
         <ul style="display:flex;flex-direction:column;gap:24px;text-align:center">
-            <li><a href="#home" class="mobile-nav-link">Home</a></li><li><a href="#about" class="mobile-nav-link">About</a></li><li><a href="#academics" class="mobile-nav-link">Academics</a></li><li><a href="#boarding" class="mobile-nav-link">Boarding</a></li><li><a href="#facilities" class="mobile-nav-link">Facilities</a></li><li><a href="#student-life" class="mobile-nav-link">Student Life</a></li><li><a href="#admissions" class="mobile-nav-link">Admissions</a></li><li><a href="#gallery" class="mobile-nav-link">Gallery</a></li><li><a href="#news" class="mobile-nav-link">News</a></li><li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+            <li><a href="#home" class="mobile-nav-link">Home</a></li>
+            <li><a href="#about" class="mobile-nav-link">About</a></li>
+            <li><a href="#academics" class="mobile-nav-link">Academics</a></li>
+            <li><a href="#boarding" class="mobile-nav-link">Boarding</a></li>
+            <li><a href="#facilities" class="mobile-nav-link">Facilities</a></li>
+            <li><a href="#student-life" class="mobile-nav-link">Student Life</a></li>
+            <li><a href="#admissions" class="mobile-nav-link">Admissions</a></li>
+            <li><a href="#gallery" class="mobile-nav-link">Gallery</a></li>
+            <li><a href="#news" class="mobile-nav-link">News</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
         </ul>
     </div>
 
     <main id="main-content">
         <!-- HOME -->
         <section id="home" class="hero-section">
-            <div class="hero-bg-image" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1350')"></div>
+            <div class="hero-bg-image" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1350'); background-color: var(--navy);"></div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
                 <span class="hero-badge">Est. 2010 · Murengeti, Tigoni</span>
@@ -252,17 +899,24 @@
                     <a href="#contact" class="btn btn-outline btn-lg" style="border-color:#fff;color:#fff">Book a School Tour</a>
                 </div>
             </div>
+            <div class="hero-scroll-indicator" aria-hidden="true">↓</div>
         </section>
 
         <!-- WELCOME -->
         <section class="section-padding reveal-on-scroll">
             <div class="container welcome-grid">
-                <div class="welcome-image-container glass-card"><div class="welcome-image" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90910e59f?w=800')"></div></div>
+                <div class="welcome-image-container glass-card">
+                    <div class="welcome-image" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90910e59f?w=800'); background-color: #e0e7ff;"></div>
+                </div>
                 <div>
                     <span class="section-tag">Welcome</span>
                     <h2 class="section-title">A Place Where Every Child <span class="text-highlight">Thrives</span></h2>
                     <p>Fountain Group of Schools – Tigoni is a vibrant private day and boarding school in Murengeti, Tigoni, Limuru. Since 2010 we have delivered a transformative CBC education supported by modern ICT centres, science labs, a rich library, and expansive sports grounds.</p>
-                    <div class="welcome-stats"><div><span class="stat-number">2010</span><span>Founded</span></div><div><span class="stat-number">14</span><span>Grades</span></div><div><span class="stat-number">20+</span><span>Activities</span></div></div>
+                    <div class="welcome-stats">
+                        <div><span class="stat-number">2010</span><br>Founded</div>
+                        <div><span class="stat-number">14</span><br>Grades</div>
+                        <div><span class="stat-number">20+</span><br>Activities</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -270,18 +924,25 @@
         <!-- ABOUT -->
         <section id="about" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">About Us</span><h2 class="section-title">Our <span class="text-highlight">Heritage</span></h2></div>
+                <div class="text-center">
+                    <span class="section-tag">About Us</span>
+                    <h2 class="section-title">Our <span class="text-highlight">Heritage</span></h2>
+                </div>
                 <div class="about-grid">
                     <div>
                         <h3>Founded in 2010</h3>
                         <p>Fountain Group of Schools – Tigoni was established to provide world‑class education in the serene highlands of Kiambu County. Located in <strong>Murengeti, Tigoni, Limuru</strong>, the school has grown into a centre of academic and personal excellence.</p>
-                        <div style="margin:20px 0"><strong>Mission:</strong> To empower learners with knowledge, skills and values for lifelong success.<br><strong>Vision:</strong> A leading school producing holistic, confident and innovative leaders.<br><strong>Motto:</strong> "Empowering Every Learner to Excel"</div>
+                        <div style="margin:20px 0">
+                            <strong>Mission:</strong> To empower learners with knowledge, skills and values for lifelong success.<br>
+                            <strong>Vision:</strong> A leading school producing holistic, confident and innovative leaders.<br>
+                            <strong>Motto:</strong> "Empowering Every Learner to Excel"
+                        </div>
                         <h4>Core Values</h4>
                         <ul style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
-                            <li class="btn btn-sm" style="background:var(--p);color:#fff">Integrity</li>
-                            <li class="btn btn-sm" style="background:var(--p);color:#fff">Excellence</li>
-                            <li class="btn btn-sm" style="background:var(--p);color:#fff">Respect</li>
-                            <li class="btn btn-sm" style="background:var(--p);color:#fff">Innovation</li>
+                            <li class="btn btn-sm" style="background:var(--navy);color:#fff">Integrity</li>
+                            <li class="btn btn-sm" style="background:var(--navy);color:#fff">Excellence</li>
+                            <li class="btn btn-sm" style="background:var(--navy);color:#fff">Respect</li>
+                            <li class="btn btn-sm" style="background:var(--navy);color:#fff">Innovation</li>
                         </ul>
                     </div>
                     <div class="timeline">
@@ -297,7 +958,10 @@
         <!-- ACADEMICS -->
         <section id="academics" class="section-padding reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">Academics</span><h2 class="section-title">CBC <span class="text-highlight">Education</span></h2></div>
+                <div class="text-center">
+                    <span class="section-tag">Academics</span>
+                    <h2 class="section-title">CBC <span class="text-highlight">Education</span></h2>
+                </div>
                 <div class="grade-levels-grid">
                     <div class="grade-card glass-card"><h4>Playgroup</h4><p>Play‑based early learning</p></div>
                     <div class="grade-card glass-card"><h4>PP1 & PP2</h4><p>Foundation skills</p></div>
@@ -312,7 +976,10 @@
         <!-- BOARDING -->
         <section id="boarding" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">Boarding</span><h2 class="section-title">Modern <span class="text-highlight">Dormitories</span></h2></div>
+                <div class="text-center">
+                    <span class="section-tag">Boarding</span>
+                    <h2 class="section-title">Modern <span class="text-highlight">Dormitories</span></h2>
+                </div>
                 <div class="features-grid">
                     <div class="feature-card glass-card"><h4>Separate Dorms</h4><p>For boys and girls</p></div>
                     <div class="feature-card glass-card"><h4>24/7 Supervision</h4><p>Qualified matrons and patrons</p></div>
@@ -327,13 +994,40 @@
         <!-- FACILITIES -->
         <section id="facilities" class="section-padding reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">Facilities</span><h2 class="section-title">World‑Class <span class="text-highlight">Learning Spaces</span></h2></div>
-                <div class="facilities-carousel">
-                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500')"></div><h4 style="padding:16px 20px 4px">ICT Centre</h4><p style="padding:0 20px 20px;color:var(--text-medium)">Computer laboratories for digital literacy</p></div>
-                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1564981797816-104b4d3e4a9e?w=500')"></div><h4 style="padding:16px 20px 4px">Science Labs</h4><p style="padding:0 20px 20px;color:var(--text-medium)">Fully equipped for experiments</p></div>
-                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b046da?w=500')"></div><h4 style="padding:16px 20px 4px">Library</h4><p style="padding:0 20px 20px;color:var(--text-medium)">Rich collection of books and digital resources</p></div>
-                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500')"></div><h4 style="padding:16px 20px 4px">Sports Fields</h4><p style="padding:0 20px 20px;color:var(--text-medium)">Expansive grounds for football, athletics</p></div>
-                    <div class="facility-slide glass-card"><div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500')"></div><h4 style="padding:16px 20px 4px">Digital Classrooms</h4><p style="padding:0 20px 20px;color:var(--text-medium)">Interactive smart boards and tablets</p></div>
+                <div class="text-center">
+                    <span class="section-tag">Facilities</span>
+                    <h2 class="section-title">World‑Class <span class="text-highlight">Learning Spaces</span></h2>
+                </div>
+                <div class="facilities-carousel" id="facilitiesCarousel" role="region" aria-label="Facilities showcase" tabindex="0">
+                    <div class="facility-slide glass-card">
+                        <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500'); background-color: #dbeafe;"></div>
+                        <h4>ICT Centre</h4>
+                        <p>Computer laboratories for digital literacy</p>
+                    </div>
+                    <div class="facility-slide glass-card">
+                        <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1564981797816-104b4d3e4a9e?w=500'); background-color: #e0f2fe;"></div>
+                        <h4>Science Labs</h4>
+                        <p>Fully equipped for experiments</p>
+                    </div>
+                    <div class="facility-slide glass-card">
+                        <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b046da?w=500'); background-color: #f3e8ff;"></div>
+                        <h4>Library</h4>
+                        <p>Rich collection of books and digital resources</p>
+                    </div>
+                    <div class="facility-slide glass-card">
+                        <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500'); background-color: #dcfce7;"></div>
+                        <h4>Sports Fields</h4>
+                        <p>Expansive grounds for football, athletics</p>
+                    </div>
+                    <div class="facility-slide glass-card">
+                        <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500'); background-color: #fef9c3;"></div>
+                        <h4>Digital Classrooms</h4>
+                        <p>Interactive smart boards and tablets</p>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn" id="carouselPrev" aria-label="Scroll left">‹</button>
+                    <button class="carousel-btn" id="carouselNext" aria-label="Scroll right">›</button>
                 </div>
             </div>
         </section>
@@ -341,7 +1035,10 @@
         <!-- STUDENT LIFE -->
         <section id="student-life" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">Student Life</span><h2 class="section-title">Beyond the <span class="text-highlight">Classroom</span></h2></div>
+                <div class="text-center">
+                    <span class="section-tag">Student Life</span>
+                    <h2 class="section-title">Beyond the <span class="text-highlight">Classroom</span></h2>
+                </div>
                 <div class="activities-grid">
                     <div class="grade-card glass-card">⚽ Football</div>
                     <div class="grade-card glass-card">🏀 Basketball</div>
@@ -359,18 +1056,47 @@
         <!-- ADMISSIONS -->
         <section id="admissions" class="section-padding reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">Admissions</span><h2 class="section-title">Join <span class="text-highlight">Fountain</span></h2></div>
+                <div class="text-center">
+                    <span class="section-tag">Admissions</span>
+                    <h2 class="section-title">Join <span class="text-highlight">Fountain</span></h2>
+                </div>
                 <div class="contact-grid">
                     <div class="glass-card" style="padding:30px">
                         <h3>Application Process</h3>
-                        <ol style="margin:16px 0;padding-left:20px"><li>Submit enquiry</li><li>School tour</li><li>Assessment</li><li>Admission offer</li></ol>
-                        <a href="#" class="btn btn-primary">Download Prospectus (PDF)</a>
+                        <ol style="margin:16px 0;padding-left:20px">
+                            <li>Submit enquiry</li>
+                            <li>School tour</li>
+                            <li>Assessment</li>
+                            <li>Admission offer</li>
+                        </ol>
+                        <a href="#" class="btn btn-primary" id="downloadProspectus">Download Prospectus (PDF)</a>
                     </div>
                     <div class="glass-card" style="padding:30px">
                         <h3>FAQs</h3>
-                        <div class="accordion-item"><div class="accordion-header">What curriculum do you follow? ▾</div><div class="accordion-content"><p>Competency‑Based Curriculum (CBC) from Playgroup to Grade 9.</p></div></div>
-                        <div class="accordion-item"><div class="accordion-header">Is boarding available? ▾</div><div class="accordion-content"><p>Yes, modern boarding for both boys and girls.</p></div></div>
-                        <div class="accordion-item"><div class="accordion-header">How can I apply? ▾</div><div class="accordion-content"><p>Contact us or visit the school for an application form.</p></div></div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="faq1">
+                                What curriculum do you follow? <span aria-hidden="true">▾</span>
+                            </button>
+                            <div class="accordion-content" id="faq1" role="region">
+                                <p>Competency‑Based Curriculum (CBC) from Playgroup to Grade 9.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="faq2">
+                                Is boarding available? <span aria-hidden="true">▾</span>
+                            </button>
+                            <div class="accordion-content" id="faq2" role="region">
+                                <p>Yes, modern boarding for both boys and girls.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header" aria-expanded="false" aria-controls="faq3">
+                                How can I apply? <span aria-hidden="true">▾</span>
+                            </button>
+                            <div class="accordion-content" id="faq3" role="region">
+                                <p>Contact us or visit the school for an application form.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -379,14 +1105,29 @@
         <!-- GALLERY -->
         <section id="gallery" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">Gallery</span><h2 class="section-title">Campus <span class="text-highlight">Moments</span></h2></div>
+                <div class="text-center">
+                    <span class="section-tag">Gallery</span>
+                    <h2 class="section-title">Campus <span class="text-highlight">Moments</span></h2>
+                </div>
                 <div class="gallery-masonry">
-                    <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400')"><div class="gallery-caption">Main Campus</div></div>
-                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400')"><div class="gallery-caption">Digital Classroom</div></div>
-                    <div class="gallery-item wide" style="background-image:url('https://images.unsplash.com/photo-1526976668912-1a811878dd37?w=600')"><div class="gallery-caption">Sports Day</div></div>
-                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1564981797816-104b4d3e4a9e?w=400')"><div class="gallery-caption">Science Lab</div></div>
-                    <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b046da?w=400')"><div class="gallery-caption">Library</div></div>
-                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400')"><div class="gallery-caption">Playground</div></div>
+                    <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400'); background-color: #dbeafe;">
+                        <div class="gallery-caption">Main Campus</div>
+                    </div>
+                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400'); background-color: #e0f2fe;">
+                        <div class="gallery-caption">Digital Classroom</div>
+                    </div>
+                    <div class="gallery-item wide" style="background-image:url('https://images.unsplash.com/photo-1526976668912-1a811878dd37?w=600'); background-color: #fef9c3;">
+                        <div class="gallery-caption">Sports Day</div>
+                    </div>
+                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1564981797816-104b4d3e4a9e?w=400'); background-color: #dcfce7;">
+                        <div class="gallery-caption">Science Lab</div>
+                    </div>
+                    <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b046da?w=400'); background-color: #f3e8ff;">
+                        <div class="gallery-caption">Library</div>
+                    </div>
+                    <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400'); background-color: #fce7f3;">
+                        <div class="gallery-caption">Playground</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -394,11 +1135,38 @@
         <!-- NEWS -->
         <section id="news" class="section-padding reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">News & Events</span><h2 class="section-title">School <span class="text-highlight">Updates</span></h2></div>
+                <div class="text-center">
+                    <span class="section-tag">News & Events</span>
+                    <h2 class="section-title">School <span class="text-highlight">Updates</span></h2>
+                </div>
                 <div class="news-grid">
-                    <article class="glass-card"><div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500')"><span class="news-category">Academics</span></div><div style="padding:20px"><h4>End of Term Review</h4><p>Celebrating outstanding learner progress across all grades.</p></div></article>
-                    <article class="glass-card"><div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1461896836934-6f907e3d1e2f?w=500')"><span class="news-category">Sports</span></div><div style="padding:20px"><h4>Inter‑School Tournament</h4><p>Our football and athletics teams shine in regional competitions.</p></div></article>
-                    <article class="glass-card"><div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500')"><span class="news-category">Music</span></div><div style="padding:20px"><h4>Music Festival Highlights</h4><p>Stunning choir and instrumental performances.</p></div></article>
+                    <article class="glass-card">
+                        <div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500'); background-color: #dbeafe;">
+                            <span class="news-category">Academics</span>
+                        </div>
+                        <div style="padding:20px">
+                            <h4>End of Term Review</h4>
+                            <p>Celebrating outstanding learner progress across all grades.</p>
+                        </div>
+                    </article>
+                    <article class="glass-card">
+                        <div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1461896836934-6f907e3d1e2f?w=500'); background-color: #dcfce7;">
+                            <span class="news-category">Sports</span>
+                        </div>
+                        <div style="padding:20px">
+                            <h4>Inter‑School Tournament</h4>
+                            <p>Our football and athletics teams shine in regional competitions.</p>
+                        </div>
+                    </article>
+                    <article class="glass-card">
+                        <div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500'); background-color: #fef9c3;">
+                            <span class="news-category">Music</span>
+                        </div>
+                        <div style="padding:20px">
+                            <h4>Music Festival Highlights</h4>
+                            <p>Stunning choir and instrumental performances.</p>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -406,69 +1174,297 @@
         <!-- CONTACT -->
         <section id="contact" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
-                <div class="text-center"><span class="section-tag">Contact</span><h2 class="section-title">Get in <span class="text-highlight">Touch</span></h2></div>
+                <div class="text-center">
+                    <span class="section-tag">Contact</span>
+                    <h2 class="section-title">Get in <span class="text-highlight">Touch</span></h2>
+                </div>
                 <div class="contact-grid">
                     <div class="glass-card" style="padding:40px">
                         <div class="contact-detail">📍 Murengeti, Tigoni, Limuru, Kiambu County</div>
                         <div class="contact-detail">📞 011 569 0747</div>
                         <div class="contact-detail">📱 +254 727 017 890</div>
                         <div class="contact-detail">✉️ tigoni@fountainschools.ac.ke</div>
-                        <form style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
-                            <input type="text" placeholder="Your Name" required style="padding:10px;border-radius:8px;border:1px solid #ccc">
-                            <input type="email" placeholder="Email" required style="padding:10px;border-radius:8px">
-                            <textarea placeholder="Message" rows="3" style="padding:10px;border-radius:8px"></textarea>
+                        <form id="contactForm" style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
+                            <label for="contact-name" class="visually-hidden">Your Name</label>
+                            <input type="text" id="contact-name" placeholder="Your Name" required aria-label="Your Name">
+                            <label for="contact-email" class="visually-hidden">Email</label>
+                            <input type="email" id="contact-email" placeholder="Email" required aria-label="Email">
+                            <label for="contact-message" class="visually-hidden">Message</label>
+                            <textarea id="contact-message" placeholder="Message" rows="3" aria-label="Message"></textarea>
                             <button type="submit" class="btn btn-primary">Send Message</button>
                         </form>
                     </div>
-                    <div class="map-placeholder glass-card" style="padding:40px;display:flex;flex-direction:column;justify-content:center;align-items:center">
-                        <svg width="80" height="80"><circle cx="40" cy="35" r="12" stroke="var(--navy)" stroke-width="3" fill="#e8f5e9"/><path d="M40 47 L30 65 L50 65 Z" fill="var(--navy)"/></svg>
-                        <p><strong>Murengeti, Tigoni, Limuru</strong><br>Kiambu County, Kenya</p>
-                        <a href="https://maps.google.com/?q=Murengeti+Tigoni+Limuru+Kenya" target="_blank" class="btn btn-outline mt-2">Open in Google Maps</a>
+                    <div class="glass-card" style="padding:0; overflow:hidden;">
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63828.247835151145!2d36.635912!3d-1.139355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f3d6e7b4d2b7f%3A0x3f0e9d8c4b8e1d3!2sTigoni%2C%20Limuru!5e0!3m2!1sen!2ske!4v1700000000000"
+                                allowfullscreen 
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Map showing location of Fountain Group of Schools, Tigoni"
+                                aria-label="Google Map of our location">
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer style="background:var(--pd);color:#fff;padding:60px 0 30px;margin-top:80px">
+    <!-- Footer -->
+    <footer style="background:var(--navy-dark);color:#fff;padding:60px 0 30px;margin-top:80px">
         <div class="container">
             <div class="footer-grid">
-                <div><h4>Fountain Group of Schools – Tigoni</h4><p>A premier CBC day and boarding school in Murengeti, Tigoni.</p></div>
-                <div><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#admissions">Admissions</a></li></ul></div>
-                <div><h4>Contact</h4><p>📍 Murengeti, Tigoni<br>📞 011 569 0747<br>✉️ tigoni@fountainschools.ac.ke</p></div>
-                <div><h4>Newsletter</h4><form style="display:flex;gap:8px"><input type="email" placeholder="Email" required style="padding:10px;border-radius:50px;border:none"><button class="btn btn-primary btn-sm">Subscribe</button></form></div>
+                <div>
+                    <h4>Fountain Group of Schools – Tigoni</h4>
+                    <p>A premier CBC day and boarding school in Murengeti, Tigoni.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#admissions">Admissions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Contact</h4>
+                    <p>📍 Murengeti, Tigoni<br>📞 011 569 0747<br>✉️ tigoni@fountainschools.ac.ke</p>
+                </div>
+                <div>
+                    <h4>Newsletter</h4>
+                    <form id="newsletterForm" style="display:flex;gap:8px">
+                        <label for="newsletter-email" class="visually-hidden">Email address</label>
+                        <input type="email" id="newsletter-email" placeholder="Email" required aria-label="Email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
+                        <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+                    </form>
+                </div>
             </div>
-            <div style="border-top:1px solid rgba(255,255,255,0.2);padding-top:20px;text-align:center">© 2026 Fountain Group of Schools – Tigoni. All rights reserved.</div>
+            <div style="border-top:1px solid rgba(255,255,255,0.2);padding-top:20px;text-align:center">
+                © 2026 Fountain Group of Schools – Tigoni. All rights reserved.
+            </div>
         </div>
     </footer>
 
-    <button class="scroll-to-top" id="scrollToTop">↑</button>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
 
     <script>
-        (function(){
-            window.addEventListener('load',()=>document.getElementById('loadingScreen').classList.add('hidden'));
-            const h=document.getElementById('siteHeader'),s=document.getElementById('scrollToTop');
-            window.addEventListener('scroll',()=>{
-                h.style.boxShadow=scrollY>50?'0 4px 20px rgba(0,0,0,0.1)':'none';
-                s.classList.toggle('visible',scrollY>500);
-                document.querySelectorAll('section[id]').forEach(sec=>{
-                    if(scrollY>=sec.offsetTop-100) document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
-                    document.querySelector(`.nav-link[href="#${sec.id}"]`)?.classList.add('active');
+        (function() {
+            'use strict';
+
+            // ===== 1. Loading Screen with minimum display =====
+            const loadingScreen = document.getElementById('loadingScreen');
+            const startTime = Date.now();
+            window.addEventListener('load', function() {
+                const elapsed = Date.now() - startTime;
+                const minDisplay = 500;
+                setTimeout(function() {
+                    loadingScreen.classList.add('hidden');
+                }, Math.max(0, minDisplay - elapsed));
+            });
+
+            // ===== 2. Toast Notification System =====
+            function showToast(message, type) {
+                type = type || 'success';
+                const toast = document.createElement('div');
+                toast.className = 'toast toast-' + type;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                setTimeout(function() {
+                    toast.style.opacity = '0';
+                    toast.style.transition = 'opacity 0.4s';
+                    setTimeout(function() { toast.remove(); }, 400);
+                }, 3000);
+            }
+
+            // ===== 3. Dark Mode =====
+            const darkToggle = document.getElementById('darkModeToggle');
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                document.body.classList.add('dark-mode');
+            }
+            darkToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode') ? 'enabled' : 'disabled');
+            });
+
+            // ===== 4. Mobile Menu =====
+            const mobileToggle = document.getElementById('mobileMenuToggle');
+            const mobileOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMobileMenu(forceState) {
+                const active = (forceState !== undefined) ? forceState : !mobileOverlay.classList.contains('active');
+                mobileOverlay.classList.toggle('active', active);
+                document.body.style.overflow = active ? 'hidden' : '';
+                mobileToggle.setAttribute('aria-expanded', active ? 'true' : 'false');
+            }
+
+            mobileToggle.addEventListener('click', function() { toggleMobileMenu(); });
+            mobileLinks.forEach(function(link) {
+                link.addEventListener('click', function() { toggleMobileMenu(false); });
+            });
+
+            // Click outside to close
+            document.addEventListener('click', function(e) {
+                if (mobileOverlay.classList.contains('active') &&
+                    !mobileOverlay.contains(e.target) &&
+                    !mobileToggle.contains(e.target)) {
+                    toggleMobileMenu(false);
+                }
+            });
+
+            // Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
+                    toggleMobileMenu(false);
+                    mobileToggle.focus();
+                }
+            });
+
+            // ===== 5. Scroll Spy (fixed) =====
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section[id]');
+
+            function updateActiveNav() {
+                const scrollY = window.scrollY + 120; // offset for header
+                let currentSection = sections[0];
+                for (let i = 0; i < sections.length; i++) {
+                    const section = sections[i];
+                    if (scrollY >= section.offsetTop) {
+                        currentSection = section;
+                    } else {
+                        break;
+                    }
+                }
+                navLinks.forEach(function(link) {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection.id) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            // ===== 6. Header shadow on scroll =====
+            const header = document.getElementById('siteHeader');
+
+            // ===== 7. Scroll to Top button =====
+            const scrollBtn = document.getElementById('scrollToTop');
+            scrollBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ===== 8. Intersection Observer for reveal =====
+            const revealElements = document.querySelectorAll('.reveal-on-scroll');
+            const revealObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+            revealElements.forEach(function(el) { revealObserver.observe(el); });
+
+            // ===== 9. Accordion accessibility =====
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(function(header) {
+                header.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    const isOpen = content.classList.contains('open');
+                    // Close others in same parent (optional)
+                    // For simplicity, toggle this one
+                    content.classList.toggle('open');
+                    this.setAttribute('aria-expanded', !isOpen);
                 });
             });
-            s.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-            const mt=document.getElementById('mobileMenuToggle'),mo=document.getElementById('mobileMenuOverlay');
-            mt.addEventListener('click',()=>{mo.classList.toggle('active');document.body.style.overflow=mo.classList.contains('active')?'hidden':''});
-            document.querySelectorAll('.mobile-nav-link').forEach(l=>l.addEventListener('click',()=>{mo.classList.remove('active');document.body.style.overflow=''}));
-            document.getElementById('darkModeToggle').addEventListener('click',()=>{
-                document.body.classList.toggle('dark-mode');
-                localStorage.setItem('darkMode',document.body.classList.contains('dark-mode')?'enabled':'disabled');
+
+            // ===== 10. Facilities Carousel controls =====
+            const carousel = document.getElementById('facilitiesCarousel');
+            const prevBtn = document.getElementById('carouselPrev');
+            const nextBtn = document.getElementById('carouselNext');
+
+            function scrollCarousel(direction) {
+                const slideWidth = carousel.querySelector('.facility-slide').offsetWidth + 24; // gap
+                const currentScroll = carousel.scrollLeft;
+                const target = currentScroll + direction * slideWidth;
+                carousel.scrollTo({ left: target, behavior: 'smooth' });
+            }
+
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', function() { scrollCarousel(-1); });
+                nextBtn.addEventListener('click', function() { scrollCarousel(1); });
+            }
+
+            // Keyboard navigation for carousel
+            carousel.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') { e.preventDefault(); scrollCarousel(-1); }
+                if (e.key === 'ArrowRight') { e.preventDefault(); scrollCarousel(1); }
             });
-            if(localStorage.getItem('darkMode')==='enabled') document.body.classList.add('dark-mode');
-            const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('revealed')}),{threshold:0.15});
-            document.querySelectorAll('.reveal-on-scroll').forEach(el=>observer.observe(el));
-            document.querySelectorAll('.accordion-header').forEach(btn=>btn.addEventListener('click',()=>btn.nextElementSibling.classList.toggle('open')));
-            const nf=document.querySelector('footer form');if(nf)nf.addEventListener('submit',e=>{e.preventDefault();alert('Thank you for subscribing!');nf.reset()});
+
+            // ===== 11. Form Submissions =====
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showToast('Thank you! Your message has been sent.', 'success');
+                    this.reset();
+                });
+            }
+
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showToast('Thank you for subscribing!', 'success');
+                    this.reset();
+                });
+            }
+
+            // ===== 12. Prospectus Download =====
+            const prospectusBtn = document.getElementById('downloadProspectus');
+            if (prospectusBtn) {
+                prospectusBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showToast('Prospectus download will begin shortly.', 'success');
+                    // In production, link to actual PDF: window.location.href = '/assets/prospectus.pdf';
+                });
+            }
+
+            // ===== 13. Combined scroll handler =====
+            let ticking = false;
+            window.addEventListener('scroll', function() {
+                if (!ticking) {
+                    window.requestAnimationFrame(function() {
+                        // Header shadow
+                        header.style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(0,0,0,0.1)' : 'none';
+
+                        // Scroll to top visibility
+                        if (window.scrollY > 500) {
+                            scrollBtn.classList.add('visible');
+                        } else {
+                            scrollBtn.classList.remove('visible');
+                        }
+
+                        // Update active nav
+                        updateActiveNav();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Initial calls
+            updateActiveNav();
+
+            // ===== 14. Map external link security (already in HTML) =====
+
+            // ===== 15. Ensure all external links open safely =====
+            document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
+                if (!link.rel) link.rel = 'noopener noreferrer';
+            });
+
         })();
     </script>
 </body>
