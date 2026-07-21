@@ -16,7 +16,9 @@
     <!-- Preconnect for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         /* ===== CSS Variables ===== */
         :root {
@@ -26,6 +28,8 @@
             --navy-dark: #0f1e44;
             --red: #D62828;
             --red-light: #e84545;
+            --gold: #C9A84C;
+            --gold-light: #E8D5A3;
             --white: #ffffff;
             --off-white: #f8f9fa;
             --light-bg: #f0f2f5;
@@ -41,6 +45,8 @@
             --font-heading: 'Playfair Display', serif;
             --font-body: 'Inter', sans-serif;
             --nav-height: 80px;
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.1);
+            --shadow-hover: 0 30px 80px rgba(0,0,0,0.15);
         }
 
         body.dark-mode {
@@ -60,6 +66,9 @@
             --navy-dark: #1a2e50;
             --red: #e84545;
             --red-light: #f06060;
+            --gold: #C9A84C;
+            --shadow-lg: 0 20px 60px rgba(0,0,0,0.3);
+            --shadow-hover: 0 30px 80px rgba(0,0,0,0.4);
         }
 
         /* ===== Reset & Base ===== */
@@ -78,14 +87,24 @@
         button { cursor: pointer; border: none; background: none; font-family: inherit; }
         img { max-width: 100%; display: block; }
 
+        /* ===== Scrollbar Styling ===== */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--off-white); }
+        ::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--navy-light); }
+
         /* ===== Utilities ===== */
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         .section-padding { padding: 100px 0; }
         .bg-light { background: var(--off-white); }
+        .bg-gradient { 
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+        }
         .text-center { text-align: center; }
         .mt-2 { margin-top: 32px; }
         .mt-3 { margin-top: 48px; }
         .text-highlight { color: var(--red); font-weight: 700; }
+        .text-gold { color: var(--gold); }
         .visually-hidden {
             position: absolute;
             width: 1px;
@@ -106,29 +125,71 @@
         .section-tag {
             display: inline-block;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-weight: 600;
-            font-size: .85rem;
+            font-size: .8rem;
             color: var(--red);
             margin-bottom: 12px;
+            background: rgba(214,40,40,0.08);
+            padding: 4px 16px;
+            border-radius: 50px;
         }
         .section-title {
             font-size: clamp(2rem, 4vw, 3.2rem);
             margin-bottom: 16px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--red);
+            margin: 12px auto 0;
+            border-radius: 10px;
+        }
+        .section-title.text-left::after { margin: 12px 0 0; }
+
+        /* ===== Floating Elements ===== */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         /* ===== Buttons ===== */
         .btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 12px 28px;
+            gap: 10px;
+            padding: 14px 32px;
             font-weight: 600;
             border-radius: 50px;
             font-size: .95rem;
             transition: var(--transition);
             border: 2px solid transparent;
             cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: width .6s, height .6s, top .6s, left .6s;
+        }
+        .btn:hover::after {
+            width: 300px;
+            height: 300px;
+            top: -100px;
+            left: -100px;
         }
         .btn-primary {
             background: var(--navy);
@@ -137,8 +198,8 @@
         }
         .btn-primary:hover {
             background: var(--navy-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(27,47,107,0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(27,47,107,0.4);
         }
         .btn-outline {
             background: transparent;
@@ -148,8 +209,18 @@
         .btn-outline:hover {
             background: var(--navy);
             color: #fff;
+            transform: translateY(-3px);
         }
-        .btn-lg { padding: 16px 36px; font-size: 1.05rem; }
+        .btn-gold {
+            background: var(--gold);
+            color: #fff;
+            box-shadow: 0 4px 14px rgba(201,168,76,0.4);
+        }
+        .btn-gold:hover {
+            background: #b8963a;
+            transform: translateY(-3px);
+        }
+        .btn-lg { padding: 18px 40px; font-size: 1.05rem; }
         .btn-sm { padding: 8px 20px; font-size: .85rem; }
         .btn-apply {
             background: var(--red);
@@ -159,7 +230,7 @@
         }
         .btn-apply:hover {
             background: var(--red-light);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         /* ===== Cards ===== */
@@ -173,8 +244,8 @@
             transition: var(--transition);
         }
         .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
         }
 
         /* ===== Skip Link ===== */
@@ -208,15 +279,21 @@
             transition: opacity .5s, visibility .5s;
         }
         .loading-screen.hidden { opacity: 0; visibility: hidden; }
-        .loading-screen svg {
+        .loading-screen .loader {
             width: 80px;
             height: 80px;
+            border: 4px solid var(--light-bg);
+            border-top: 4px solid var(--navy);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
         }
+        @keyframes spin { to { transform: rotate(360deg); } }
         .loading-screen p {
             margin-top: 16px;
             font-weight: 600;
             color: var(--navy);
             font-family: var(--font-heading);
+            font-size: 1.2rem;
         }
 
         /* ===== Toast Notification ===== */
@@ -252,6 +329,10 @@
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--glass-border);
             height: var(--nav-height);
+            transition: var(--transition);
+        }
+        .site-header.scrolled {
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
         }
         .header-container {
             max-width: 1400px;
@@ -267,11 +348,13 @@
             align-items: center;
             gap: 12px;
         }
-        .logo-link svg {
+        .logo-link img {
             display: block;
             height: 72px;
             width: auto;
+            transition: var(--transition);
         }
+        .logo-link img:hover { transform: scale(1.02); }
         .main-nav .nav-list {
             display: flex;
             gap: 32px;
@@ -290,7 +373,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--navy);
+            background: var(--red);
             transition: width .3s;
         }
         .nav-link:hover,
@@ -309,6 +392,12 @@
             color: var(--text-medium);
             padding: 8px;
             border-radius: 50%;
+            transition: var(--transition);
+            background: var(--glass-bg);
+        }
+        .dark-mode-toggle:hover {
+            background: var(--navy);
+            color: #fff;
         }
         .dark-mode-toggle svg {
             width: 22px;
@@ -355,7 +444,9 @@
             display: block;
             padding: 12px 0;
             color: var(--text-dark);
+            transition: var(--transition);
         }
+        .mobile-nav-link:hover { color: var(--red); }
 
         /* ===== Hero ===== */
         .hero-section {
@@ -375,8 +466,12 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            filter: brightness(0.6);
             background-color: var(--navy);
+            animation: zoomIn 20s infinite alternate;
+        }
+        @keyframes zoomIn {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
         }
         .hero-overlay {
             position: absolute;
@@ -384,7 +479,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(27,47,107,0.8), rgba(0,0,0,0.5));
+            background: linear-gradient(135deg, rgba(27,47,107,0.85) 0%, rgba(0,0,0,0.5) 100%);
             z-index: 1;
         }
         .hero-content {
@@ -397,19 +492,26 @@
         }
         .hero-badge {
             display: inline-block;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
             backdrop-filter: blur(8px);
             padding: 8px 24px;
             border-radius: 50px;
             font-weight: 500;
             margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         .hero-headline {
             font-size: clamp(2.8rem, 7vw, 4.8rem);
-            font-weight: 800;
+            font-weight: 900;
             color: #fff;
             line-height: 1.1;
             margin-bottom: 20px;
+        }
+        .hero-headline .highlight-text {
+            background: linear-gradient(135deg, var(--gold), #f5d98e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero-subheading {
             font-size: 1.15rem;
@@ -417,12 +519,37 @@
             margin-bottom: 40px;
             max-width: 700px;
             margin-inline: auto;
+            line-height: 1.8;
         }
         .hero-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+            font-family: var(--font-heading);
+        }
+        .hero-stat-label {
+            font-size: .85rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .hero-scroll-indicator {
             position: absolute;
@@ -431,6 +558,7 @@
             transform: translateX(-50%);
             color: rgba(255,255,255,0.8);
             animation: bounce 2s infinite;
+            font-size: 1.5rem;
         }
         @keyframes bounce {
             0%,20%,50%,80%,100% { transform: translateY(0) translateX(-50%); }
@@ -463,7 +591,18 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
-        .feature-card { padding: 40px 30px; text-align: center; }
+        .feature-card {
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+        .feature-card .icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            display: block;
+            color: var(--red);
+        }
+        .feature-card h4 { margin-bottom: 8px; }
 
         .welcome-grid,
         .about-grid {
@@ -477,6 +616,28 @@
             overflow: hidden;
             height: 500px;
             background: var(--light-bg);
+            position: relative;
+        }
+        .welcome-image-container .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2rem;
+            transition: var(--transition);
+            box-shadow: 0 0 0 20px rgba(214,40,40,0.2);
+        }
+        .welcome-image-container .play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 0 30px rgba(214,40,40,0.1);
         }
         .welcome-image {
             width: 100%;
@@ -507,6 +668,16 @@
             padding: 30px 24px;
             text-align: center;
             width: 180px;
+            transition: var(--transition);
+        }
+        .grade-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        .grade-card .grade-icon {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            display: block;
         }
 
         /* ===== Facilities Carousel ===== */
@@ -523,12 +694,17 @@
             min-width: 280px;
             scroll-snap-align: start;
             flex-shrink: 0;
+            overflow: hidden;
         }
         .facility-image {
             height: 200px;
             background-size: cover;
             background-position: center;
             background-color: var(--light-bg);
+            transition: var(--transition);
+        }
+        .facility-slide:hover .facility-image {
+            transform: scale(1.05);
         }
         .facility-slide h4 { padding: 16px 20px 4px; }
         .facility-slide p { padding: 0 20px 20px; color: var(--text-medium); }
@@ -540,15 +716,19 @@
             margin-top: 16px;
         }
         .carousel-btn {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: var(--navy);
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             transition: var(--transition);
+            box-shadow: 0 4px 14px rgba(27,47,107,0.2);
         }
-        .carousel-btn:hover { background: var(--navy-light); }
+        .carousel-btn:hover {
+            background: var(--navy-light);
+            transform: scale(1.05);
+        }
 
         /* ===== Gallery ===== */
         .gallery-masonry {
@@ -564,6 +744,12 @@
             position: relative;
             overflow: hidden;
             background-color: var(--light-bg);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
         }
         .gallery-item.tall { grid-row: span 2; }
         .gallery-item.wide { grid-column: span 2; }
@@ -572,19 +758,23 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
             color: #fff;
-            padding: 16px;
-            opacity: 0;
-            transition: .3s;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform .3s;
         }
-        .gallery-item:hover .gallery-caption { opacity: 1; }
+        .gallery-item:hover .gallery-caption { transform: translateY(0); }
+        .gallery-caption h4 { color: #fff; font-size: 1.1rem; }
 
         /* ===== News ===== */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
+        }
+        .news-card {
+            overflow: hidden;
         }
         .news-image {
             height: 200px;
@@ -597,12 +787,24 @@
             position: absolute;
             top: 16px;
             left: 16px;
-            background: var(--navy);
+            background: var(--red);
             color: #fff;
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 50px;
-            font-size: .8rem;
+            font-size: .75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
+        .news-date {
+            color: var(--text-muted);
+            font-size: .85rem;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .news-card .news-content { padding: 20px; }
 
         /* ===== Contact ===== */
         .contact-grid {
@@ -613,10 +815,25 @@
         .contact-detail {
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 16px;
+            margin-bottom: 20px;
             color: var(--text-medium);
+            padding: 12px 16px;
+            border-radius: 12px;
+            background: var(--glass-bg);
+            transition: var(--transition);
         }
+        .contact-detail:hover {
+            background: var(--navy);
+            color: #fff;
+        }
+        .contact-detail i {
+            font-size: 1.2rem;
+            width: 24px;
+            color: var(--red);
+        }
+        .contact-detail:hover i { color: #fff; }
+
         .map-container {
             border-radius: var(--border-radius);
             overflow: hidden;
@@ -634,11 +851,12 @@
         .timeline {
             position: relative;
             padding-left: 40px;
-            border-left: 2px solid var(--navy-light);
+            border-left: 3px solid var(--gold);
         }
         .timeline-item {
             margin-bottom: 30px;
             position: relative;
+            padding-left: 16px;
         }
         .timeline-item::before {
             content: '';
@@ -647,13 +865,16 @@
             top: 5px;
             width: 18px;
             height: 18px;
-            background: var(--navy);
+            background: var(--gold);
             border-radius: 50%;
+            border: 3px solid var(--white);
+            box-shadow: 0 0 0 3px var(--gold);
         }
+        .timeline-item h4 { color: var(--gold); }
 
         /* ===== Accordion ===== */
         .accordion-item {
-            border-bottom: 1px solid rgba(27,47,107,0.1);
+            border-bottom: 1px solid rgba(27,47,107,0.08);
         }
         .accordion-header {
             padding: 16px 0;
@@ -666,13 +887,19 @@
             border: none;
             font-size: 1rem;
             color: var(--text-dark);
+            transition: var(--transition);
         }
+        .accordion-header:hover { color: var(--red); }
         .accordion-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height .4s ease;
+            padding: 0 4px;
         }
-        .accordion-content.open { max-height: 300px; }
+        .accordion-content.open {
+            max-height: 300px;
+            padding: 0 4px 16px;
+        }
 
         /* ===== Footer ===== */
         .footer-grid {
@@ -681,16 +908,55 @@
             gap: 40px;
             margin-bottom: 40px;
         }
-        footer a { color: rgba(255,255,255,0.8); }
-        footer a:hover { color: #fff; }
+        footer {
+            background: var(--navy-dark);
+            color: #fff;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        footer h4 {
+            color: #fff;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        footer h4::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: var(--gold);
+            margin-top: 8px;
+        }
+        footer a { color: rgba(255,255,255,0.7); transition: var(--transition); }
+        footer a:hover { color: var(--gold); }
+        footer .social-links {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        footer .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            color: #fff;
+        }
+        footer .social-links a:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+        }
 
         /* ===== Scroll to Top ===== */
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: var(--navy);
             color: #fff;
@@ -702,12 +968,16 @@
             visibility: hidden;
             transform: translateY(20px);
             transition: var(--transition);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         .scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+        }
+        .scroll-to-top:hover {
+            background: var(--red);
+            transform: translateY(-3px);
         }
         .scroll-to-top svg {
             width: 20px;
@@ -721,9 +991,9 @@
         form input,
         form textarea {
             width: 100%;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 2px solid var(--glass-border);
             background: var(--white);
             color: var(--text-dark);
             font-family: var(--font-body);
@@ -734,7 +1004,7 @@
         form textarea:focus {
             outline: none;
             border-color: var(--navy);
-            box-shadow: 0 0 0 3px rgba(27,47,107,0.1);
+            box-shadow: 0 0 0 4px rgba(27,47,107,0.08);
         }
         form textarea { resize: vertical; }
 
@@ -743,6 +1013,7 @@
             .features-grid,
             .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
             .news-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 900px) {
             .main-nav { display: none; }
@@ -751,7 +1022,7 @@
             .about-grid,
             .contact-grid { grid-template-columns: 1fr; }
             .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-stats { gap: 30px; flex-wrap: wrap; }
         }
         @media (max-width: 600px) {
             .features-grid,
@@ -764,18 +1035,14 @@
             .welcome-stats { flex-direction: column; gap: 16px; }
             .facility-slide { min-width: 240px; }
             .contact-grid { gap: 24px; }
+            .hero-stats { flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
 <body>
     <!-- Loading Screen -->
     <div class="loading-screen" id="loadingScreen">
-        <svg viewBox="0 0 80 80">
-            <circle cx="40" cy="40" r="35" stroke="#e8f5e9" stroke-width="4" fill="none"/>
-            <path d="M40 5 A35 35 0 0 1 75 40" stroke="var(--navy)" stroke-width="4" stroke-linecap="round">
-                <animateTransform attributeName="transform" type="rotate" from="0 40 40" to="360 40 40" dur="1.2s" repeatCount="indefinite"/>
-            </path>
-        </svg>
+        <div class="loader"></div>
         <p>Fountain Group of Schools</p>
     </div>
 
@@ -785,60 +1052,7 @@
     <header class="site-header" id="siteHeader">
         <div class="header-container">
             <a href="#home" class="logo-link" aria-label="Fountain Group of Schools – Home">
-                <!-- Improved Logo SVG with better letter spacing -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 480" role="img" aria-label="Fountain Group of Schools Logo">
-                    <defs>
-                        <filter id="shieldShadow" x="-10%" y="-10%" width="130%" height="130%">
-                            <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#000" flood-opacity="0.2"/>
-                        </filter>
-                        <polygon id="star" points="0,-14 3.1,-4.4 13.3,-4.3 5.1,1.8 8.2,11.3 0,5.4 -8.2,11.3 -5.1,1.8 -13.3,-4.3 -3.1,-4.4" fill="var(--red)"/>
-                        <path id="leaf" d="M0,0 Q3,-5 8,-2 Q10,2 6,6 Q2,8 0,0" fill="var(--navy)" opacity="0.9"/>
-                    </defs>
-                    <!-- Cross -->
-                    <g fill="var(--red)">
-                        <rect x="182" y="0" width="16" height="35" rx="2"/>
-                        <rect x="172" y="8" width="36" height="16" rx="2"/>
-                    </g>
-                    <!-- Main Shield -->
-                    <path d="M 190 35 C 190 35, 330 38, 340 75 C 350 140, 320 240, 190 290 C 60 240, 30 140, 40 75 C 50 38, 190 35, 190 35 Z" fill="var(--navy)" filter="url(#shieldShadow)"/>
-                    <path d="M 190 48 C 190 48, 312 50, 320 78 C 328 135, 303 222, 190 272 C 77 222, 52 135, 60 78 C 68 50, 190 48, 190 48 Z" fill="var(--white)"/>
-                    <path d="M 190 55 C 190 55, 302 57, 310 80 C 316 130, 295 215, 190 260 C 85 215, 64 130, 70 80 C 78 57, 190 55, 190 55 Z" fill="none" stroke="var(--navy)" stroke-width="1.5" stroke-dasharray="6 3" opacity="0.4"/>
-                    <!-- Laurel Wreath -->
-                    <g transform="translate(55,85)">
-                        <use href="#leaf" transform="rotate(-30) translate(0,-5)"/>
-                        <use href="#leaf" transform="rotate(-15) translate(0,-10)"/>
-                        <use href="#leaf" transform="rotate(0) translate(0,-15)"/>
-                        <use href="#leaf" transform="rotate(15) translate(0,-10)"/>
-                        <use href="#leaf" transform="rotate(30) translate(0,-5)"/>
-                        <g transform="translate(260,0) scale(-1,1)">
-                            <use href="#leaf" transform="rotate(-30) translate(0,-5)"/>
-                            <use href="#leaf" transform="rotate(-15) translate(0,-10)"/>
-                            <use href="#leaf" transform="rotate(0) translate(0,-15)"/>
-                            <use href="#leaf" transform="rotate(15) translate(0,-10)"/>
-                            <use href="#leaf" transform="rotate(30) translate(0,-5)"/>
-                        </g>
-                    </g>
-                    <!-- Stars -->
-                    <use href="#star" x="115" y="110" />
-                    <use href="#star" x="265" y="110" />
-                    <!-- Monogram - better spacing -->
-                    <g font-family="Georgia, 'Times New Roman', 'Trajan Pro', serif" font-weight="bold" fill="var(--red)" text-anchor="middle">
-                        <text x="155" y="155" font-size="72">F</text>
-                        <text x="200" y="165" font-size="52">G</text>
-                        <text x="225" y="155" font-size="60">S</text>
-                    </g>
-                    <!-- Ribbon Banner -->
-                    <path d="M 65 260 L 315 260 L 322 282 L 315 302 L 65 302 L 58 282 Z" fill="var(--navy)"/>
-                    <path d="M 65 260 L 52 275 L 65 302" fill="var(--navy)"/>
-                    <path d="M 315 260 L 328 275 L 315 302" fill="var(--navy)"/>
-                    <path d="M 68 265 L 312 265 L 316 282 L 312 296 L 68 296 L 64 282 Z" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
-                    <text x="190" y="290" font-family="Georgia, 'Times New Roman', 'Trajan Pro', serif" font-weight="bold" font-size="22" letter-spacing="5" fill="var(--white)" text-anchor="middle">FOUNTAIN</text>
-                    <!-- Outside text -->
-                    <text x="190" y="340" font-family="Georgia, 'Times New Roman', serif" font-weight="600" font-size="13" letter-spacing="4" fill="var(--red)" text-anchor="middle">GROUP OF SCHOOLS</text>
-                    <rect x="100" y="360" width="180" height="22" rx="4" fill="var(--red)"/>
-                    <text x="190" y="376" font-family="Georgia, 'Times New Roman', serif" font-weight="500" font-size="9" letter-spacing="2" fill="var(--white)" text-anchor="middle">KNOWLEDGE · WISDOM · SERVICE</text>
-                    <text x="190" y="405" font-family="Georgia, 'Times New Roman', serif" font-weight="500" font-size="9" letter-spacing="2" fill="var(--navy)" text-anchor="middle">EST. 2010 · MURENGETI, TIGONI</text>
-                </svg>
+                <img src="images.png" alt="Fountain Group of Schools – Tigoni Logo" height="72" width="auto">
             </a>
             <nav class="main-nav" id="mainNav" aria-label="Main Navigation">
                 <ul class="nav-list">
@@ -855,7 +1069,7 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="#admissions" class="btn btn-apply pulse-animation">Apply Now</a>
+                <a href="#admissions" class="btn btn-apply pulse-animation"><i class="fas fa-graduation-cap"></i> Apply Now</a>
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
                     <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -886,20 +1100,40 @@
     </div>
 
     <main id="main-content">
-        <!-- HOME -->
+        <!-- HOME / HERO -->
         <section id="home" class="hero-section">
-            <div class="hero-bg-image" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1350'); background-color: var(--navy);"></div>
+            <div class="hero-bg-image" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1350');"></div>
             <div class="hero-overlay"></div>
             <div class="hero-content">
-                <span class="hero-badge">Est. 2010 · Murengeti, Tigoni</span>
-                <h1 class="hero-headline">Empowering Every Learner<br>to <span class="text-highlight">Excel</span></h1>
-                <p class="hero-subheading">Holistic CBC education from Playgroup to Grade 9 in a nurturing, modern environment.</p>
+                <span class="hero-badge"><i class="fas fa-award"></i> Est. 2010 · Murengeti, Tigoni</span>
+                <h1 class="hero-headline">
+                    Empowering Every Learner<br>
+                    to <span class="highlight-text">Excel</span>
+                </h1>
+                <p class="hero-subheading">
+                    Holistic CBC education from Playgroup to Grade 9 in a nurturing, 
+                    modern environment that develops future leaders.
+                </p>
                 <div class="hero-buttons">
-                    <a href="#admissions" class="btn btn-primary btn-lg">Apply Now</a>
-                    <a href="#contact" class="btn btn-outline btn-lg" style="border-color:#fff;color:#fff">Book a School Tour</a>
+                    <a href="#admissions" class="btn btn-apply btn-lg"><i class="fas fa-paper-plane"></i> Apply Now</a>
+                    <a href="#contact" class="btn btn-outline btn-lg" style="border-color:#fff;color:#fff"><i class="fas fa-calendar-check"></i> Book a Tour</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" id="statYears">14+</span>
+                        <span class="hero-stat-label">Years of Excellence</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" id="statStudents">500+</span>
+                        <span class="hero-stat-label">Students Enrolled</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number" id="statActivities">20+</span>
+                        <span class="hero-stat-label">Co-Curricular Activities</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-scroll-indicator" aria-hidden="true">↓</div>
+            <div class="hero-scroll-indicator" aria-hidden="true"><i class="fas fa-chevron-down"></i></div>
         </section>
 
         <!-- WELCOME -->
@@ -907,16 +1141,32 @@
             <div class="container welcome-grid">
                 <div class="welcome-image-container glass-card">
                     <div class="welcome-image" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90910e59f?w=800'); background-color: #e0e7ff;"></div>
+                    <a href="#" class="play-btn" aria-label="Play video tour"><i class="fas fa-play"></i></a>
                 </div>
                 <div>
-                    <span class="section-tag">Welcome</span>
-                    <h2 class="section-title">A Place Where Every Child <span class="text-highlight">Thrives</span></h2>
-                    <p>Fountain Group of Schools – Tigoni is a vibrant private day and boarding school in Murengeti, Tigoni, Limuru. Since 2010 we have delivered a transformative CBC education supported by modern ICT centres, science labs, a rich library, and expansive sports grounds.</p>
+                    <span class="section-tag"><i class="fas fa-hand-wave"></i> Welcome</span>
+                    <h2 class="section-title text-left">A Place Where Every Child <span class="text-highlight">Thrives</span></h2>
+                    <p style="font-size:1.05rem; color: var(--text-medium); margin-bottom: 16px;">
+                        Fountain Group of Schools – Tigoni is a vibrant private day and boarding school 
+                        in Murengeti, Tigoni, Limuru. Since 2010 we have delivered a transformative CBC 
+                        education supported by modern ICT centres, science labs, a rich library, and 
+                        expansive sports grounds.
+                    </p>
                     <div class="welcome-stats">
-                        <div><span class="stat-number">2010</span><br>Founded</div>
-                        <div><span class="stat-number">14</span><br>Grades</div>
-                        <div><span class="stat-number">20+</span><br>Activities</div>
+                        <div>
+                            <span class="stat-number"><i class="fas fa-calendar-alt" style="color:var(--red);margin-right:8px;"></i> 2010</span>
+                            <br><span style="color:var(--text-muted);">Founded</span>
+                        </div>
+                        <div>
+                            <span class="stat-number"><i class="fas fa-users" style="color:var(--red);margin-right:8px;"></i> 14</span>
+                            <br><span style="color:var(--text-muted);">Grades</span>
+                        </div>
+                        <div>
+                            <span class="stat-number"><i class="fas fa-trophy" style="color:var(--red);margin-right:8px;"></i> 20+</span>
+                            <br><span style="color:var(--text-muted);">Activities</span>
+                        </div>
                     </div>
+                    <a href="#about" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Learn More</a>
                 </div>
             </div>
         </section>
@@ -925,31 +1175,48 @@
         <section id="about" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">About Us</span>
+                    <span class="section-tag"><i class="fas fa-info-circle"></i> About Us</span>
                     <h2 class="section-title">Our <span class="text-highlight">Heritage</span></h2>
                 </div>
                 <div class="about-grid">
                     <div>
-                        <h3>Founded in 2010</h3>
-                        <p>Fountain Group of Schools – Tigoni was established to provide world‑class education in the serene highlands of Kiambu County. Located in <strong>Murengeti, Tigoni, Limuru</strong>, the school has grown into a centre of academic and personal excellence.</p>
-                        <div style="margin:20px 0">
-                            <strong>Mission:</strong> To empower learners with knowledge, skills and values for lifelong success.<br>
-                            <strong>Vision:</strong> A leading school producing holistic, confident and innovative leaders.<br>
-                            <strong>Motto:</strong> "Empowering Every Learner to Excel"
+                        <h3>Founded in 2010 with a Vision for Excellence</h3>
+                        <p style="font-size:1.05rem; color: var(--text-medium);">
+                            Fountain Group of Schools – Tigoni was established to provide world‑class 
+                            education in the serene highlands of Kiambu County. Located in 
+                            <strong>Murengeti, Tigoni, Limuru</strong>, the school has grown into a 
+                            centre of academic and personal excellence.
+                        </p>
+                        <div style="margin:24px 0; padding:20px; background:var(--glass-bg); border-radius:16px; border-left:4px solid var(--gold);">
+                            <p><strong>Mission:</strong> To empower learners with knowledge, skills and values for lifelong success.</p>
+                            <p style="margin-top:8px;"><strong>Vision:</strong> A leading school producing holistic, confident and innovative leaders.</p>
+                            <p style="margin-top:8px;"><strong>Motto:</strong> "Empowering Every Learner to Excel"</p>
                         </div>
                         <h4>Core Values</h4>
                         <ul style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px">
-                            <li class="btn btn-sm" style="background:var(--navy);color:#fff">Integrity</li>
-                            <li class="btn btn-sm" style="background:var(--navy);color:#fff">Excellence</li>
-                            <li class="btn btn-sm" style="background:var(--navy);color:#fff">Respect</li>
-                            <li class="btn btn-sm" style="background:var(--navy);color:#fff">Innovation</li>
+                            <li class="btn btn-sm" style="background:var(--navy);color:#fff"><i class="fas fa-check"></i> Integrity</li>
+                            <li class="btn btn-sm" style="background:var(--navy);color:#fff"><i class="fas fa-star"></i> Excellence</li>
+                            <li class="btn btn-sm" style="background:var(--navy);color:#fff"><i class="fas fa-heart"></i> Respect</li>
+                            <li class="btn btn-sm" style="background:var(--navy);color:#fff"><i class="fas fa-lightbulb"></i> Innovation</li>
                         </ul>
                     </div>
                     <div class="timeline">
-                        <div class="timeline-item"><h4>2010</h4><p>School founded with Playgroup to Grade 3.</p></div>
-                        <div class="timeline-item"><h4>2015</h4><p>Introduction of upper primary and first computer lab.</p></div>
-                        <div class="timeline-item"><h4>2018</h4><p>Boarding facilities opened.</p></div>
-                        <div class="timeline-item"><h4>2023</h4><p>Junior Secondary (Grade 7–9) launched under CBC.</p></div>
+                        <div class="timeline-item">
+                            <h4>2010</h4>
+                            <p>School founded with Playgroup to Grade 3.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2015</h4>
+                            <p>Introduction of upper primary and first computer lab.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2018</h4>
+                            <p>Boarding facilities opened for both boys and girls.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4>2023</h4>
+                            <p>Junior Secondary (Grade 7–9) launched under CBC.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -959,17 +1226,40 @@
         <section id="academics" class="section-padding reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">Academics</span>
+                    <span class="section-tag"><i class="fas fa-book"></i> Academics</span>
                     <h2 class="section-title">CBC <span class="text-highlight">Education</span></h2>
                 </div>
                 <div class="grade-levels-grid">
-                    <div class="grade-card glass-card"><h4>Playgroup</h4><p>Play‑based early learning</p></div>
-                    <div class="grade-card glass-card"><h4>PP1 & PP2</h4><p>Foundation skills</p></div>
-                    <div class="grade-card glass-card"><h4>Grades 1‑3</h4><p>Lower primary</p></div>
-                    <div class="grade-card glass-card"><h4>Grades 4‑6</h4><p>Upper primary</p></div>
-                    <div class="grade-card glass-card"><h4>Grades 7‑9</h4><p>Junior secondary</p></div>
+                    <div class="grade-card glass-card">
+                        <span class="grade-icon">🧸</span>
+                        <h4>Playgroup</h4>
+                        <p>Play‑based early learning</p>
+                    </div>
+                    <div class="grade-card glass-card">
+                        <span class="grade-icon">📚</span>
+                        <h4>PP1 & PP2</h4>
+                        <p>Foundation skills</p>
+                    </div>
+                    <div class="grade-card glass-card">
+                        <span class="grade-icon">✏️</span>
+                        <h4>Grades 1‑3</h4>
+                        <p>Lower primary</p>
+                    </div>
+                    <div class="grade-card glass-card">
+                        <span class="grade-icon">🔬</span>
+                        <h4>Grades 4‑6</h4>
+                        <p>Upper primary</p>
+                    </div>
+                    <div class="grade-card glass-card">
+                        <span class="grade-icon">🎓</span>
+                        <h4>Grades 7‑9</h4>
+                        <p>Junior secondary</p>
+                    </div>
                 </div>
-                <p class="text-center mt-2">All classes integrate technology, practical assessments, and a learner‑centred approach.</p>
+                <p class="text-center mt-2" style="color:var(--text-medium); font-size:1.05rem;">
+                    <i class="fas fa-laptop" style="color:var(--red);"></i> All classes integrate technology, practical assessments, 
+                    and a learner‑centred approach.
+                </p>
             </div>
         </section>
 
@@ -977,16 +1267,40 @@
         <section id="boarding" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">Boarding</span>
+                    <span class="section-tag"><i class="fas fa-bed"></i> Boarding</span>
                     <h2 class="section-title">Modern <span class="text-highlight">Dormitories</span></h2>
                 </div>
                 <div class="features-grid">
-                    <div class="feature-card glass-card"><h4>Separate Dorms</h4><p>For boys and girls</p></div>
-                    <div class="feature-card glass-card"><h4>24/7 Supervision</h4><p>Qualified matrons and patrons</p></div>
-                    <div class="feature-card glass-card"><h4>Warm Water</h4><p>Comfortable bathing facilities</p></div>
-                    <div class="feature-card glass-card"><h4>Health Services</h4><p>On‑call nurse and first aid</p></div>
-                    <div class="feature-card glass-card"><h4>Security</h4><p>Gated compound with CCTV</p></div>
-                    <div class="feature-card glass-card"><h4>Recreation</h4><p>Common rooms with games</p></div>
+                    <div class="feature-card glass-card">
+                        <span class="icon"><i class="fas fa-venus-mars"></i></span>
+                        <h4>Separate Dorms</h4>
+                        <p>For boys and girls with dedicated care</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <span class="icon"><i class="fas fa-clock"></i></span>
+                        <h4>24/7 Supervision</h4>
+                        <p>Qualified matrons and patrons</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <span class="icon"><i class="fas fa-hot-tub"></i></span>
+                        <h4>Warm Water</h4>
+                        <p>Comfortable bathing facilities</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <span class="icon"><i class="fas fa-heartbeat"></i></span>
+                        <h4>Health Services</h4>
+                        <p>On‑call nurse and first aid</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <span class="icon"><i class="fas fa-shield-alt"></i></span>
+                        <h4>Security</h4>
+                        <p>Gated compound with CCTV</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <span class="icon"><i class="fas fa-gamepad"></i></span>
+                        <h4>Recreation</h4>
+                        <p>Common rooms with games</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -995,39 +1309,39 @@
         <section id="facilities" class="section-padding reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">Facilities</span>
+                    <span class="section-tag"><i class="fas fa-building"></i> Facilities</span>
                     <h2 class="section-title">World‑Class <span class="text-highlight">Learning Spaces</span></h2>
                 </div>
                 <div class="facilities-carousel" id="facilitiesCarousel" role="region" aria-label="Facilities showcase" tabindex="0">
                     <div class="facility-slide glass-card">
                         <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500'); background-color: #dbeafe;"></div>
-                        <h4>ICT Centre</h4>
+                        <h4><i class="fas fa-laptop" style="color:var(--red);"></i> ICT Centre</h4>
                         <p>Computer laboratories for digital literacy</p>
                     </div>
                     <div class="facility-slide glass-card">
                         <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1564981797816-104b4d3e4a9e?w=500'); background-color: #e0f2fe;"></div>
-                        <h4>Science Labs</h4>
+                        <h4><i class="fas fa-flask" style="color:var(--red);"></i> Science Labs</h4>
                         <p>Fully equipped for experiments</p>
                     </div>
                     <div class="facility-slide glass-card">
                         <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b046da?w=500'); background-color: #f3e8ff;"></div>
-                        <h4>Library</h4>
+                        <h4><i class="fas fa-book-open" style="color:var(--red);"></i> Library</h4>
                         <p>Rich collection of books and digital resources</p>
                     </div>
                     <div class="facility-slide glass-card">
                         <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=500'); background-color: #dcfce7;"></div>
-                        <h4>Sports Fields</h4>
+                        <h4><i class="fas fa-futbol" style="color:var(--red);"></i> Sports Fields</h4>
                         <p>Expansive grounds for football, athletics</p>
                     </div>
                     <div class="facility-slide glass-card">
                         <div class="facility-image" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=500'); background-color: #fef9c3;"></div>
-                        <h4>Digital Classrooms</h4>
+                        <h4><i class="fas fa-chalkboard-teacher" style="color:var(--red);"></i> Digital Classrooms</h4>
                         <p>Interactive smart boards and tablets</p>
                     </div>
                 </div>
                 <div class="carousel-controls">
-                    <button class="carousel-btn" id="carouselPrev" aria-label="Scroll left">‹</button>
-                    <button class="carousel-btn" id="carouselNext" aria-label="Scroll right">›</button>
+                    <button class="carousel-btn" id="carouselPrev" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn" id="carouselNext" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </section>
@@ -1036,20 +1350,23 @@
         <section id="student-life" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">Student Life</span>
+                    <span class="section-tag"><i class="fas fa-users"></i> Student Life</span>
                     <h2 class="section-title">Beyond the <span class="text-highlight">Classroom</span></h2>
                 </div>
                 <div class="activities-grid">
-                    <div class="grade-card glass-card">⚽ Football</div>
-                    <div class="grade-card glass-card">🏀 Basketball</div>
-                    <div class="grade-card glass-card">🏐 Volleyball</div>
-                    <div class="grade-card glass-card">🏊 Swimming</div>
-                    <div class="grade-card glass-card">🛼 Roller Skating</div>
-                    <div class="grade-card glass-card">🎵 Music</div>
-                    <div class="grade-card glass-card">🎭 Drama</div>
-                    <div class="grade-card glass-card">♟️ Chess</div>
+                    <div class="grade-card glass-card"><span class="grade-icon">⚽</span> Football</div>
+                    <div class="grade-card glass-card"><span class="grade-icon">🏀</span> Basketball</div>
+                    <div class="grade-card glass-card"><span class="grade-icon">🏐</span> Volleyball</div>
+                    <div class="grade-card glass-card"><span class="grade-icon">🏊</span> Swimming</div>
+                    <div class="grade-card glass-card"><span class="grade-icon">🛼</span> Roller Skating</div>
+                    <div class="grade-card glass-card"><span class="grade-icon">🎵</span> Music</div>
+                    <div class="grade-card glass-card"><span class="grade-icon">🎭</span> Drama</div>
+                    <div class="grade-card glass-card"><span class="grade-icon">♟️</span> Chess</div>
                 </div>
-                <p class="text-center mt-2">Clubs: French, Computer, Debate, Environmental · Partnerships with <strong>Scripture Union</strong> and <strong>Go Kids International</strong>.</p>
+                <p class="text-center mt-2" style="color:var(--text-medium); font-size:1.05rem;">
+                    <i class="fas fa-star" style="color:var(--gold);"></i> Clubs: French, Computer, Debate, Environmental · 
+                    Partnerships with <strong>Scripture Union</strong> and <strong>Go Kids International</strong>
+                </p>
             </div>
         </section>
 
@@ -1057,25 +1374,37 @@
         <section id="admissions" class="section-padding reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">Admissions</span>
+                    <span class="section-tag"><i class="fas fa-door-open"></i> Admissions</span>
                     <h2 class="section-title">Join <span class="text-highlight">Fountain</span></h2>
                 </div>
                 <div class="contact-grid">
-                    <div class="glass-card" style="padding:30px">
-                        <h3>Application Process</h3>
-                        <ol style="margin:16px 0;padding-left:20px">
-                            <li>Submit enquiry</li>
-                            <li>School tour</li>
-                            <li>Assessment</li>
-                            <li>Admission offer</li>
-                        </ol>
-                        <a href="#" class="btn btn-primary" id="downloadProspectus">Download Prospectus (PDF)</a>
+                    <div class="glass-card" style="padding:40px;">
+                        <h3 style="color:var(--navy);"><i class="fas fa-clipboard-list" style="color:var(--red);"></i> Application Process</h3>
+                        <ul style="margin:20px 0; padding:0; list-style:none;">
+                            <li style="padding:12px 0; border-bottom:1px solid var(--glass-border); display:flex; align-items:center; gap:12px;">
+                                <span style="background:var(--red); color:#fff; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700;">1</span>
+                                Submit enquiry
+                            </li>
+                            <li style="padding:12px 0; border-bottom:1px solid var(--glass-border); display:flex; align-items:center; gap:12px;">
+                                <span style="background:var(--navy); color:#fff; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700;">2</span>
+                                School tour
+                            </li>
+                            <li style="padding:12px 0; border-bottom:1px solid var(--glass-border); display:flex; align-items:center; gap:12px;">
+                                <span style="background:var(--gold); color:#fff; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700;">3</span>
+                                Assessment
+                            </li>
+                            <li style="padding:12px 0; display:flex; align-items:center; gap:12px;">
+                                <span style="background:var(--red); color:#fff; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700;">4</span>
+                                Admission offer
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-gold" id="downloadProspectus"><i class="fas fa-download"></i> Download Prospectus</a>
                     </div>
-                    <div class="glass-card" style="padding:30px">
-                        <h3>FAQs</h3>
+                    <div class="glass-card" style="padding:40px;">
+                        <h3 style="color:var(--navy);"><i class="fas fa-question-circle" style="color:var(--gold);"></i> FAQs</h3>
                         <div class="accordion-item">
                             <button class="accordion-header" aria-expanded="false" aria-controls="faq1">
-                                What curriculum do you follow? <span aria-hidden="true">▾</span>
+                                What curriculum do you follow? <span aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
                             </button>
                             <div class="accordion-content" id="faq1" role="region">
                                 <p>Competency‑Based Curriculum (CBC) from Playgroup to Grade 9.</p>
@@ -1083,15 +1412,15 @@
                         </div>
                         <div class="accordion-item">
                             <button class="accordion-header" aria-expanded="false" aria-controls="faq2">
-                                Is boarding available? <span aria-hidden="true">▾</span>
+                                Is boarding available? <span aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
                             </button>
                             <div class="accordion-content" id="faq2" role="region">
-                                <p>Yes, modern boarding for both boys and girls.</p>
+                                <p>Yes, modern boarding for both boys and girls with full supervision.</p>
                             </div>
                         </div>
                         <div class="accordion-item">
                             <button class="accordion-header" aria-expanded="false" aria-controls="faq3">
-                                How can I apply? <span aria-hidden="true">▾</span>
+                                How can I apply? <span aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
                             </button>
                             <div class="accordion-content" id="faq3" role="region">
                                 <p>Contact us or visit the school for an application form.</p>
@@ -1106,27 +1435,27 @@
         <section id="gallery" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">Gallery</span>
+                    <span class="section-tag"><i class="fas fa-camera"></i> Gallery</span>
                     <h2 class="section-title">Campus <span class="text-highlight">Moments</span></h2>
                 </div>
                 <div class="gallery-masonry">
                     <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400'); background-color: #dbeafe;">
-                        <div class="gallery-caption">Main Campus</div>
+                        <div class="gallery-caption"><h4>Main Campus</h4></div>
                     </div>
                     <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400'); background-color: #e0f2fe;">
-                        <div class="gallery-caption">Digital Classroom</div>
+                        <div class="gallery-caption"><h4>Digital Classroom</h4></div>
                     </div>
                     <div class="gallery-item wide" style="background-image:url('https://images.unsplash.com/photo-1526976668912-1a811878dd37?w=600'); background-color: #fef9c3;">
-                        <div class="gallery-caption">Sports Day</div>
+                        <div class="gallery-caption"><h4>Sports Day</h4></div>
                     </div>
                     <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1564981797816-104b4d3e4a9e?w=400'); background-color: #dcfce7;">
-                        <div class="gallery-caption">Science Lab</div>
+                        <div class="gallery-caption"><h4>Science Lab</h4></div>
                     </div>
                     <div class="gallery-item tall" style="background-image:url('https://images.unsplash.com/photo-1521587760476-6c12a4b046da?w=400'); background-color: #f3e8ff;">
-                        <div class="gallery-caption">Library</div>
+                        <div class="gallery-caption"><h4>Library</h4></div>
                     </div>
                     <div class="gallery-item" style="background-image:url('https://images.unsplash.com/photo-1577896851231-70ef18881754?w=400'); background-color: #fce7f3;">
-                        <div class="gallery-caption">Playground</div>
+                        <div class="gallery-caption"><h4>Playground</h4></div>
                     </div>
                 </div>
             </div>
@@ -1136,35 +1465,38 @@
         <section id="news" class="section-padding reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">News & Events</span>
+                    <span class="section-tag"><i class="fas fa-newspaper"></i> News & Events</span>
                     <h2 class="section-title">School <span class="text-highlight">Updates</span></h2>
                 </div>
                 <div class="news-grid">
-                    <article class="glass-card">
+                    <article class="glass-card news-card">
                         <div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500'); background-color: #dbeafe;">
-                            <span class="news-category">Academics</span>
+                            <span class="news-category"><i class="fas fa-graduation-cap"></i> Academics</span>
                         </div>
-                        <div style="padding:20px">
+                        <div class="news-content">
                             <h4>End of Term Review</h4>
                             <p>Celebrating outstanding learner progress across all grades.</p>
+                            <div class="news-date"><i class="far fa-calendar-alt"></i> December 15, 2025</div>
                         </div>
                     </article>
-                    <article class="glass-card">
+                    <article class="glass-card news-card">
                         <div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1461896836934-6f907e3d1e2f?w=500'); background-color: #dcfce7;">
-                            <span class="news-category">Sports</span>
+                            <span class="news-category"><i class="fas fa-trophy"></i> Sports</span>
                         </div>
-                        <div style="padding:20px">
+                        <div class="news-content">
                             <h4>Inter‑School Tournament</h4>
                             <p>Our football and athletics teams shine in regional competitions.</p>
+                            <div class="news-date"><i class="far fa-calendar-alt"></i> November 28, 2025</div>
                         </div>
                     </article>
-                    <article class="glass-card">
+                    <article class="glass-card news-card">
                         <div class="news-image" style="background-image:url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500'); background-color: #fef9c3;">
-                            <span class="news-category">Music</span>
+                            <span class="news-category"><i class="fas fa-music"></i> Music</span>
                         </div>
-                        <div style="padding:20px">
+                        <div class="news-content">
                             <h4>Music Festival Highlights</h4>
                             <p>Stunning choir and instrumental performances.</p>
+                            <div class="news-date"><i class="far fa-calendar-alt"></i> November 10, 2025</div>
                         </div>
                     </article>
                 </div>
@@ -1175,23 +1507,36 @@
         <section id="contact" class="section-padding bg-light reveal-on-scroll">
             <div class="container">
                 <div class="text-center">
-                    <span class="section-tag">Contact</span>
+                    <span class="section-tag"><i class="fas fa-envelope"></i> Contact</span>
                     <h2 class="section-title">Get in <span class="text-highlight">Touch</span></h2>
                 </div>
                 <div class="contact-grid">
-                    <div class="glass-card" style="padding:40px">
-                        <div class="contact-detail">📍 Murengeti, Tigoni, Limuru, Kiambu County</div>
-                        <div class="contact-detail">📞 011 569 0747</div>
-                        <div class="contact-detail">📱 +254 727 017 890</div>
-                        <div class="contact-detail">✉️ tigoni@fountainschools.ac.ke</div>
-                        <form id="contactForm" style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
-                            <label for="contact-name" class="visually-hidden">Your Name</label>
-                            <input type="text" id="contact-name" placeholder="Your Name" required aria-label="Your Name">
-                            <label for="contact-email" class="visually-hidden">Email</label>
-                            <input type="email" id="contact-email" placeholder="Email" required aria-label="Email">
-                            <label for="contact-message" class="visually-hidden">Message</label>
-                            <textarea id="contact-message" placeholder="Message" rows="3" aria-label="Message"></textarea>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="glass-card" style="padding:40px;">
+                        <h3 style="color:var(--navy); margin-bottom:20px;"><i class="fas fa-address-card" style="color:var(--red);"></i> Contact Information</h3>
+                        <div class="contact-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Murengeti, Tigoni, Limuru, Kiambu County
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            011 569 0747
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-mobile-alt"></i>
+                            +254 727 017 890
+                        </div>
+                        <div class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            tigoni@fountainschools.ac.ke
+                        </div>
+                        <form id="contactForm" style="display:flex;flex-direction:column;gap:12px;margin-top:20px;">
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+                                <input type="text" id="contact-name" placeholder="Your Name" required aria-label="Your Name">
+                                <input type="email" id="contact-email" placeholder="Email" required aria-label="Email">
+                            </div>
+                            <input type="text" id="contact-subject" placeholder="Subject" aria-label="Subject">
+                            <textarea id="contact-message" placeholder="Message" rows="4" aria-label="Message"></textarea>
+                            <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> Send Message</button>
                         </form>
                     </div>
                     <div class="glass-card" style="padding:0; overflow:hidden;">
@@ -1212,35 +1557,51 @@
     </main>
 
     <!-- Footer -->
-    <footer style="background:var(--navy-dark);color:#fff;padding:60px 0 30px;margin-top:80px">
+    <footer>
         <div class="container">
             <div class="footer-grid">
                 <div>
                     <h4>Fountain Group of Schools – Tigoni</h4>
-                    <p>A premier CBC day and boarding school in Murengeti, Tigoni.</p>
+                    <p style="opacity:0.7; margin:8px 0 16px;">
+                        A premier CBC day and boarding school in Murengeti, Tigoni, 
+                        nurturing holistic learners since 2010.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
                 <div>
                     <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#admissions">Admissions</a></li>
+                    <ul style="display:flex;flex-direction:column;gap:8px;">
+                        <li><a href="#home"><i class="fas fa-chevron-right" style="font-size:.7rem; margin-right:6px;"></i> Home</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right" style="font-size:.7rem; margin-right:6px;"></i> About</a></li>
+                        <li><a href="#admissions"><i class="fas fa-chevron-right" style="font-size:.7rem; margin-right:6px;"></i> Admissions</a></li>
+                        <li><a href="#gallery"><i class="fas fa-chevron-right" style="font-size:.7rem; margin-right:6px;"></i> Gallery</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Contact</h4>
-                    <p>📍 Murengeti, Tigoni<br>📞 011 569 0747<br>✉️ tigoni@fountainschools.ac.ke</p>
+                    <p style="opacity:0.7; line-height:1.8;">
+                        📍 Murengeti, Tigoni<br>
+                        📞 011 569 0747<br>
+                        ✉️ tigoni@fountainschools.ac.ke
+                    </p>
                 </div>
                 <div>
                     <h4>Newsletter</h4>
-                    <form id="newsletterForm" style="display:flex;gap:8px">
-                        <label for="newsletter-email" class="visually-hidden">Email address</label>
-                        <input type="email" id="newsletter-email" placeholder="Email" required aria-label="Email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address">
-                        <button type="submit" class="btn btn-primary btn-sm">Subscribe</button>
+                    <p style="opacity:0.7; margin-bottom:12px;">
+                        Subscribe for updates and news.
+                    </p>
+                    <form id="newsletterForm" style="display:flex;flex-direction:column;gap:8px;">
+                        <input type="email" id="newsletter-email" placeholder="Your Email" required aria-label="Email address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter a valid email address" style="background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:#fff;">
+                        <button type="submit" class="btn btn-gold btn-sm"><i class="fas fa-envelope"></i> Subscribe</button>
                     </form>
                 </div>
             </div>
-            <div style="border-top:1px solid rgba(255,255,255,0.2);padding-top:20px;text-align:center">
+            <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; text-align:center; opacity:0.6; font-size:.9rem;">
                 © 2026 Fountain Group of Schools – Tigoni. All rights reserved.
             </div>
         </div>
@@ -1255,7 +1616,7 @@
         (function() {
             'use strict';
 
-            // ===== 1. Loading Screen with minimum display =====
+            // ===== 1. Loading Screen =====
             const loadingScreen = document.getElementById('loadingScreen');
             const startTime = Date.now();
             window.addEventListener('load', function() {
@@ -1266,7 +1627,7 @@
                 }, Math.max(0, minDisplay - elapsed));
             });
 
-            // ===== 2. Toast Notification System =====
+            // ===== 2. Toast Notification =====
             function showToast(message, type) {
                 type = type || 'success';
                 const toast = document.createElement('div');
@@ -1307,7 +1668,6 @@
                 link.addEventListener('click', function() { toggleMobileMenu(false); });
             });
 
-            // Click outside to close
             document.addEventListener('click', function(e) {
                 if (mobileOverlay.classList.contains('active') &&
                     !mobileOverlay.contains(e.target) &&
@@ -1316,7 +1676,6 @@
                 }
             });
 
-            // Escape key
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && mobileOverlay.classList.contains('active')) {
                     toggleMobileMenu(false);
@@ -1324,17 +1683,16 @@
                 }
             });
 
-            // ===== 5. Scroll Spy (fixed) =====
+            // ===== 5. Scroll Spy =====
             const navLinks = document.querySelectorAll('.nav-link');
             const sections = document.querySelectorAll('section[id]');
 
             function updateActiveNav() {
-                const scrollY = window.scrollY + 120; // offset for header
+                const scrollY = window.scrollY + 120;
                 let currentSection = sections[0];
                 for (let i = 0; i < sections.length; i++) {
-                    const section = sections[i];
-                    if (scrollY >= section.offsetTop) {
-                        currentSection = section;
+                    if (scrollY >= sections[i].offsetTop) {
+                        currentSection = sections[i];
                     } else {
                         break;
                     }
@@ -1347,16 +1705,16 @@
                 });
             }
 
-            // ===== 6. Header shadow on scroll =====
+            // ===== 6. Header Shadow =====
             const header = document.getElementById('siteHeader');
 
-            // ===== 7. Scroll to Top button =====
+            // ===== 7. Scroll to Top =====
             const scrollBtn = document.getElementById('scrollToTop');
             scrollBtn.addEventListener('click', function() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // ===== 8. Intersection Observer for reveal =====
+            // ===== 8. Reveal on Scroll =====
             const revealElements = document.querySelectorAll('.reveal-on-scroll');
             const revealObserver = new IntersectionObserver(function(entries) {
                 entries.forEach(function(entry) {
@@ -1367,28 +1725,25 @@
             }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
             revealElements.forEach(function(el) { revealObserver.observe(el); });
 
-            // ===== 9. Accordion accessibility =====
+            // ===== 9. Accordion =====
             const accordionHeaders = document.querySelectorAll('.accordion-header');
             accordionHeaders.forEach(function(header) {
                 header.addEventListener('click', function() {
                     const content = this.nextElementSibling;
                     const isOpen = content.classList.contains('open');
-                    // Close others in same parent (optional)
-                    // For simplicity, toggle this one
                     content.classList.toggle('open');
                     this.setAttribute('aria-expanded', !isOpen);
                 });
             });
 
-            // ===== 10. Facilities Carousel controls =====
+            // ===== 10. Carousel =====
             const carousel = document.getElementById('facilitiesCarousel');
             const prevBtn = document.getElementById('carouselPrev');
             const nextBtn = document.getElementById('carouselNext');
 
             function scrollCarousel(direction) {
-                const slideWidth = carousel.querySelector('.facility-slide').offsetWidth + 24; // gap
-                const currentScroll = carousel.scrollLeft;
-                const target = currentScroll + direction * slideWidth;
+                const slideWidth = carousel.querySelector('.facility-slide').offsetWidth + 24;
+                const target = carousel.scrollLeft + direction * slideWidth;
                 carousel.scrollTo({ left: target, behavior: 'smooth' });
             }
 
@@ -1397,13 +1752,12 @@
                 nextBtn.addEventListener('click', function() { scrollCarousel(1); });
             }
 
-            // Keyboard navigation for carousel
             carousel.addEventListener('keydown', function(e) {
                 if (e.key === 'ArrowLeft') { e.preventDefault(); scrollCarousel(-1); }
                 if (e.key === 'ArrowRight') { e.preventDefault(); scrollCarousel(1); }
             });
 
-            // ===== 11. Form Submissions =====
+            // ===== 11. Forms =====
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
@@ -1422,32 +1776,32 @@
                 });
             }
 
-            // ===== 12. Prospectus Download =====
+            // ===== 12. Prospectus =====
             const prospectusBtn = document.getElementById('downloadProspectus');
             if (prospectusBtn) {
                 prospectusBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     showToast('Prospectus download will begin shortly.', 'success');
-                    // In production, link to actual PDF: window.location.href = '/assets/prospectus.pdf';
                 });
             }
 
-            // ===== 13. Combined scroll handler =====
+            // ===== 13. Scroll Handler =====
             let ticking = false;
             window.addEventListener('scroll', function() {
                 if (!ticking) {
                     window.requestAnimationFrame(function() {
-                        // Header shadow
-                        header.style.boxShadow = window.scrollY > 50 ? '0 4px 20px rgba(0,0,0,0.1)' : 'none';
+                        if (window.scrollY > 50) {
+                            header.classList.add('scrolled');
+                        } else {
+                            header.classList.remove('scrolled');
+                        }
 
-                        // Scroll to top visibility
                         if (window.scrollY > 500) {
                             scrollBtn.classList.add('visible');
                         } else {
                             scrollBtn.classList.remove('visible');
                         }
 
-                        // Update active nav
                         updateActiveNav();
                         ticking = false;
                     });
@@ -1455,14 +1809,50 @@
                 }
             });
 
-            // Initial calls
             updateActiveNav();
 
-            // ===== 14. Map external link security (already in HTML) =====
-
-            // ===== 15. Ensure all external links open safely =====
+            // ===== 14. External Links =====
             document.querySelectorAll('a[target="_blank"]').forEach(function(link) {
                 if (!link.rel) link.rel = 'noopener noreferrer';
+            });
+
+            // ===== 15. Counter Animation =====
+            function animateCounter(element, target, suffix) {
+                suffix = suffix || '';
+                let current = 0;
+                const increment = target / 50;
+                const interval = setInterval(function() {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(interval);
+                    }
+                    element.textContent = Math.round(current) + suffix;
+                }, 30);
+            }
+
+            // Animate stats when they come into view
+            const statObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-target'));
+                        const suffix = el.getAttribute('data-suffix') || '';
+                        animateCounter(el, target, suffix);
+                        statObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            const statElements = document.querySelectorAll('.hero-stat-number');
+            statElements.forEach(function(el, index) {
+                const targets = [14, 500, 20];
+                const suffixes = ['+', '+', '+'];
+                el.setAttribute('data-target', targets[index]);
+                el.setAttribute('data-suffix', suffixes[index]);
+                // Start with a placeholder
+                el.textContent = '0' + suffixes[index];
+                statObserver.observe(el);
             });
 
         })();
